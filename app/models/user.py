@@ -4,6 +4,15 @@ from flask_login import UserMixin
 import datetime
 
 
+follows = db.Table(
+    "follows",
+    db.Column("follower_id", db.Integer,
+              db.ForeignKey("users.id"), nullable=False),
+    db.Column("followed_id", db.Integer,
+              db.ForeignKey("users.id"), nullable=False)
+)
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -22,6 +31,15 @@ class User(db.Model, UserMixin):
     comments = db.relationship(
         'Comment', back_populates="commentOwner", cascade="all, delete-orphan")
 
+    followers = db.relationship(
+        "User",
+        secondary=follows,
+        primaryjoin=(follows.c.follower_id == id),
+        secondaryjoin=(follows.c.followed_id == id),
+        backref=db.backref("following", lazy="dynamic"),
+        lazy="dynamic"
+    )
+
     @property
     def password(self):
         return self.hashed_password
@@ -33,11 +51,23 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
+    def followUser(self, user):
+        if user not in self.following:
+            self.following.append(user)
+            return self.to_dict
+
+    def unfollowUser(self, user):
+        if user in self.following:
+            self.following.remove(user)
+            return self.to_dict()
+
     def to_dict(self):
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
             'nick_name': self.nick_name,
-            'profile_image_url': self.profile_image_url
+            'profile_image_url': self.profile_image_url,
+            'posts': {post.to_dict()['id']: post.to_dict() for post in self.posts},
+            'follows': {user.to_dict()['id']: user.to_dict() for user in self.followers}
         }
