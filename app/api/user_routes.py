@@ -63,3 +63,13 @@ def delete_post(id):
     return {'message': f"Deleted post {id}"}
 
 
+@user_routes.route('<int:id>/follows')
+@login_required
+def myFollowers(id):
+    user = User.query.get(id)
+    return user.to_dict()['follows']
+
+
+@user_routes.route('/follows/new', methods=['POST'])
+@login_required
+def createFollow():
