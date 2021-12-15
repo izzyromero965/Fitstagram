@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required
 from app.forms.post_follower import NewFollow
+from sqlalchemy import or_
 from app.models import db, User, Post
 from app.forms import NewPost, EditPost
 from .auth_routes import validation_errors_to_error_messages
@@ -12,6 +13,19 @@ user_routes = Blueprint('users', __name__)
 @login_required
 def users():
     users = User.query.all()
+    return {'users': [user.to_dict() for user in users]}
+
+
+@user_routes.route('<term>')
+@login_required
+def searchUsers(search):
+    users = User.query.filter(
+        or_(
+            User.nick_name.ilike(f"%{search}%"),
+            User.username.ilike(f"%{search}%")
+        )
+    ).all()
+
     return {'users': [user.to_dict() for user in users]}
 
 
