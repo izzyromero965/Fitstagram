@@ -21,5 +21,3 @@ class NewPost(FlaskForm):
 class EditPost(FlaskForm):
     content = StringField('Content', validators=[
                           DataRequired(), contentValidator])
-    image_url = StringField('Image Url', validators=[DataRequired(), URL(
-        require_tld=True, message="Please enter a valid url for the cover photo")])

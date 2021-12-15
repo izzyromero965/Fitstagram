@@ -40,3 +40,16 @@ def create_post(id):
         return newPost.to_dict()
     else:
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+
+@user_routes.route('/<int:id>/posts/<int:post_id>', methods=["PUT"])
+def edit_post(id):
+    form = EditPost()
+    postToEdit = Post.query.get(int(id))
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        postToEdit.content = form.data['content']
+        db.session.commit()
+        return postToEdit.to_dict()
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
