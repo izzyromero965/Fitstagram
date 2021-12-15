@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
+from app.forms.post_follower import NewFollow
 from app.models import db, User, Post
 from app.forms import NewPost, EditPost
 from .auth_routes import validation_errors_to_error_messages
@@ -73,3 +74,26 @@ def myFollowers(id):
 @user_routes.route('/follows/new', methods=['POST'])
 @login_required
 def createFollow():
+    form = NewFollow()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        follower_id = form.data['follower_id']
+        followed_id = form.data['followed_id']
+        user = User.query.get(follower_id)
+        follow = User.query.get(followed_id)
+        follow.followUser(user)
+        db.session.commit()
+        return user.to_dict()['follows']
+
+
+@user_routes.route('/<int:follower_id>/follows/<int:followed_id>/delete', methods=['DELETE'])
+@login_required
+def deleteFollow(follower_id, followed_id):
+    user = User.query.get(follower_id)
+    unfollowed = User.query.get(followed_id)
+    unfollowed.unfollowUser(user)
+    db.session.commit()
+    return {
+        'user': follower_id,
+        'unfollowed': followed_id
+    }
