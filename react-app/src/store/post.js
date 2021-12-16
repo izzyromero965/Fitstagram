@@ -50,7 +50,7 @@ export const createPost = (formdata, id) => async (dispatch) => {
 };
 
 // Gets a single users posts
-export const getUsersPosts = (id) => async (dispatch) => {
+export const getSingleUserPosts = (id) => async (dispatch) => {
   const response = await fetch(`/api/users/${id}/posts`);
   if (response.ok) {
     const posts = await response.json();
@@ -87,7 +87,7 @@ export const editOnePost = (post) => async (dispatch) => {
 };
 
 //Delete a post
-export const deletePost = (userid, id) => async (dispatch) => {
+export const deleteOnePost = (userid, id) => async (dispatch) => {
   const response = await fetch(`/api/users/${userid}/posts/${id}/delete`, {
     method: 'DELETE',
   });
@@ -131,6 +131,8 @@ const postReducer = (state = initialState, action) => {
       delete newState[action.post.id];
       return newState;
     }
+    default:
+      return state;
   }
 };
 
