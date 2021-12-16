@@ -23,7 +23,8 @@ const SignUpForm = () => {
       formData.append('username', username);
       formData.append('email', email);
       formData.append('password', password);
-      formData.append('nickname', nickname);
+      formData.append('nick_name', nickname);
+      console.log('XXXXXXXXXXXXXXXXX', formData.get('profile_image_url'));
       const data = await dispatch(signUp(formData));
       if (data) {
         setErrors(data);
@@ -94,6 +95,19 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
         ></input>
+        <label>Profile Image</label>
+        <input
+          type="file"
+          accept=".jpg,.jpeg,.png,.gif"
+          onChange={(e) => set_profile_image_url(e.target.files[0])}
+        />
+        <label>Nickname</label>
+        <input
+          type="text"
+          name="Nickname"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+        />
       </div>
       <button type="submit">Sign Up</button>
     </form>
