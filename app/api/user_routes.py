@@ -4,6 +4,8 @@ from app.forms.post_follower import NewFollow
 from sqlalchemy import or_
 from app.models import db, User, Post
 from app.forms import NewPost, EditPost
+from app.awsupload import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 from .auth_routes import validation_errors_to_error_messages
 
 user_routes = Blueprint('users', __name__)
