@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import IntegerField, StringField
+from wtforms.fields.simple import FileField
 from wtforms.validators import DataRequired, ValidationError, URL
 from app.models import db, Post
 
@@ -14,8 +15,7 @@ class NewPost(FlaskForm):
     user_id = IntegerField("User Id", validators=[DataRequired()])
     content = StringField('Content', validators=[
                           DataRequired(), contentValidator])
-    image_url = StringField('Image Url', validators=[DataRequired(), URL(
-        require_tld=True, message="Please enter a valid url for the cover photo")])
+    image_url = FileField('Image Url', validators=[DataRequired()])
 
 
 class EditPost(FlaskForm):
