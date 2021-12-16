@@ -5,7 +5,7 @@ import postReducer from './post';
 
 const rootReducer = combineReducers({
   session,
-  postReducer,
+  posts: postReducer,
 });
 
 let enhancer;
