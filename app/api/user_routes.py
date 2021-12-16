@@ -39,13 +39,19 @@ def user(id):
 
 
 @user_routes.route('/<int:id>/posts')
-def get_posts(id):
+def get_users_posts(id):
     posts = Post.query.filter(Post.user_id == id)
     return {'posts': [post.to_dict() for post in posts]}
 
 
-@user_routes.route('/<int:id>/posts', methods=['POST'])
-def create_post(id):
+@user_routes.route('/posts')
+def get_all_posts():
+    posts = Post.query.all()
+    return {'posts': [post.to_dict() for post in posts]}
+
+
+@user_routes.route('/<int:id>/posts/new', methods=['POST'])
+def create_post():
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if "image_url" not in form.data:
@@ -79,7 +85,7 @@ def create_post(id):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@user_routes.route('/<int:id>/posts/<int:post_id>', methods=["PUT"])
+@user_routes.route('/<int:id>/posts/<int:post_id>/edit', methods=["PUT"])
 def edit_post(id):
     form = EditPost()
     postToEdit = Post.query.get(int(id))
@@ -92,7 +98,7 @@ def edit_post(id):
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@user_routes.route('/<int:id>/posts/<int:post_id>', methods=['DELETE'])
+@user_routes.route('/<int:id>/posts/<int:post_id>/delete', methods=['DELETE'])
 def delete_post(id):
     postToDelete = Post.query.get(int(id))
     db.session.delete(postToDelete)
