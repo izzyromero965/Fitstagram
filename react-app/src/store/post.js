@@ -74,15 +74,12 @@ export const getPosts = () => async (dispatch) => {
 };
 
 //Edits a single post
-export const editOnePost = (post) => async (dispatch) => {
-  const response = await fetch(
-    `/api/users/${post.user_id}/posts/${post.id}/edit`,
-    {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(post),
-    }
-  );
+export const editOnePost = (userid, content, id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userid}/posts/${id}/edit`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content }),
+  });
   if (response.ok) {
     const edited = await response.json();
     dispatch(editPost(edited));
