@@ -48,9 +48,29 @@ def get_posts(id):
 def create_post(id):
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
+    if "image_url" not in form.data:
+        return {"errors": "image required"}, 400
+
+    image = form.data["image_url"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+    print("bingbong----------<<<<<<<<<", upload)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
     if form.validate_on_submit():
         newPost = Post(user_id=form['user_id'].data,
-                       content=form['content'].data, image_url=form['image_url'].data)
+                       content=form['content'].data, image_url=url)
 
         db.session.add(newPost)
         db.session.commit()
