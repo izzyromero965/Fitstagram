@@ -4,6 +4,9 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
+from app.awsupload import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
+
 
 from .models import db, User
 from .api.user_routes import user_routes
