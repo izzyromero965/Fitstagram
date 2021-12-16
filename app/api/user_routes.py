@@ -51,7 +51,8 @@ def get_all_posts():
 
 
 @user_routes.route('/<int:id>/posts/new', methods=['POST'])
-def create_post():
+def create_post(id):
+    print("im here boiiiii!!! XXXX")
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if "image_url" not in form.data:
@@ -86,7 +87,7 @@ def create_post():
 
 
 @user_routes.route('/<int:id>/posts/<int:post_id>/edit', methods=["PUT"])
-def edit_post(id):
+def edit_post(id, post_id):
     form = EditPost()
     postToEdit = Post.query.get(int(id))
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -99,11 +100,11 @@ def edit_post(id):
 
 
 @user_routes.route('/<int:id>/posts/<int:post_id>/delete', methods=['DELETE'])
-def delete_post(id):
-    postToDelete = Post.query.get(int(id))
+def delete_post(id, post_id):
+    postToDelete = Post.query.get(int(post_id))
     db.session.delete(postToDelete)
     db.session.commit()
-    return {'message': f"Deleted post {id}"}
+    return {'message': f"Deleted post {post_id}"}
 
 
 @user_routes.route('<int:id>/follows')

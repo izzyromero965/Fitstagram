@@ -30,12 +30,16 @@ const deletePost = (post) => ({
 });
 
 // Creates a post
-export const createPost = (formdata, id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${id}/posts/new`, {
-    method: 'POST',
-    body: formdata,
-  });
-
+export const createPost = (formdata) => async (dispatch) => {
+  console.log('XXXXXXX this is it =====>', formdata.get('user_id'));
+  const response = await fetch(
+    `/api/users/${formdata.get('user_id')}/posts/new`,
+    {
+      method: 'POST',
+      body: formdata,
+    }
+  );
+  console.log('this is response', response);
   if (response.ok) {
     const post = await response.json();
     dispatch(newPost(post));
@@ -70,15 +74,12 @@ export const getPosts = () => async (dispatch) => {
 };
 
 //Edits a single post
-export const editOnePost = (post) => async (dispatch) => {
-  const response = await fetch(
-    `/api/users/${post.user_id}/posts/${post.id}/edit`,
-    {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(post),
-    }
-  );
+export const editOnePost = (userid, content, id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${userid}/posts/${id}/edit`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content }),
+  });
   if (response.ok) {
     const edited = await response.json();
     dispatch(editPost(edited));
