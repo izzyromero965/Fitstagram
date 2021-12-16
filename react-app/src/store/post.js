@@ -30,12 +30,16 @@ const deletePost = (post) => ({
 });
 
 // Creates a post
-export const createPost = (formdata, id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${id}/posts/new`, {
-    method: 'POST',
-    body: formdata,
-  });
-
+export const createPost = (formdata) => async (dispatch) => {
+  console.log('XXXXXXX this is it =====>', formdata.get('user_id'));
+  const response = await fetch(
+    `/api/users/${formdata.get('user_id')}/posts/new`,
+    {
+      method: 'POST',
+      body: formdata,
+    }
+  );
+  console.log('this is response', response);
   if (response.ok) {
     const post = await response.json();
     dispatch(newPost(post));

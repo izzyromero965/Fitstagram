@@ -51,7 +51,8 @@ def get_all_posts():
 
 
 @user_routes.route('/<int:id>/posts/new', methods=['POST'])
-def create_post():
+def create_post(id):
+    print("im here boiiiii!!! XXXX")
     form = NewPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if "image_url" not in form.data:
