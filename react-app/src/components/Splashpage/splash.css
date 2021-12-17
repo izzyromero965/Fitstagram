@@ -1,0 +1,79 @@
+.splash-wrapper {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  height: 90vh;
+  align-items: center;
+}
+
+.header-img-container {
+  display: flex;
+  background-image: url('https://www.instagram.com/static/images/homepage/home-phones@2x.png/9364675fb26a.png');
+  background-position: 0 0;
+  background-size: 454px 618px;
+  height: 618px;
+  background-repeat: no-repeat;
+  flex-direction: row;
+  width: 26rem;
+}
+.content-container {
+  justify-content: center;
+  padding-bottom: 32px;
+}
+
+.description-container {
+  height: 38rem;
+}
+
+.top-description {
+  display: flex;
+  flex-direction: column;
+  /* background-color: chocolate; */
+  margin-top: 0.5rem;
+  height: 23rem;
+  width: 22rem;
+  margin-left: 1.5rem;
+  align-items: center;
+  border: rgb(218, 218, 218);
+  border-width: 0.1px;
+  border-style: solid;
+}
+
+h1 {
+  margin-bottom: 2rem;
+  
+}
+
+.or {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  margin-bottom: 0.8rem;
+  width: 15.5rem;
+  justify-content: center;
+}
+
+.dash {
+  height: 1px;
+  border: 0 solid #000;
+  width: 5rem;
+}
+
+.demoBtn {
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  display: block;
+  font-weight: 600;
+  padding: 5px 9px;
+  text-align: center;
+  text-transform: inherit;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 18px;
+  color: white;
+  background-color: #458eff;
+
+  width: 15.6rem;
+}
