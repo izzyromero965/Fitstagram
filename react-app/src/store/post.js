@@ -3,6 +3,9 @@ const GET_ALL_POSTS = 'post/GET_POSTS';
 const GET_USERS_POSTS = 'post/GET_USERS_POSTS';
 const DELETE_POST = 'post/DELETE_POST';
 const EDIT_POST = 'post/EDIT_POST';
+const CREATE_COMMENT = 'post/CREATE_COMMENT';
+const DELETE_COMMENT = 'post/DELETE_COMMENT';
+const EDIT_COMMENT = 'post/EDIT_COMMENT';
 
 const newPost = (post) => ({
   type: CREATE_POST,
@@ -27,6 +30,21 @@ const editPost = (post) => ({
 const deletePost = (post) => ({
   type: DELETE_POST,
   post,
+});
+
+const createComment = (comment) => ({
+  type: CREATE_COMMENT,
+  comment,
+});
+
+const editComment = (comment) => ({
+  type: EDIT_COMMENT,
+  comment,
+});
+
+const deleteComment = (comment) => ({
+  type: DELETE_COMMENT,
+  comment,
 });
 
 // Creates a post
@@ -99,6 +117,44 @@ export const deleteOnePost = (userid, id) => async (dispatch) => {
   }
 };
 
+export const createAComment = (comment) => async (dispatch) => {
+  const response = await fetch('/api/comments/new', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(comment),
+  });
+
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(createComment(comment));
+    return comment;
+  }
+};
+
+export const editAComment = (comment) => async (dispatch) => {
+  const response = await fetch(`/api/comments/${comment.id}/edit`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(comment),
+  });
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(editComment(comment));
+    return comment;
+  }
+};
+
+export const deleteAcomment = (id) => async (dispatch) => {
+  const response = await fetch(`/api/comments/${id}/delete`, {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    const comment = await response.json();
+    dispatch(deleteComment(comment));
+    return comment;
+  }
+};
+
 const initialState = {};
 
 const postReducer = (state = initialState, action) => {
@@ -130,6 +186,23 @@ const postReducer = (state = initialState, action) => {
         ...state,
       };
       delete newState[action.post.id];
+      return newState;
+    }
+    case CREATE_COMMENT: {
+      const newState = { ...state };
+      newState[action.comment.post_id].comments[action.comment.id] =
+        action.comment;
+      return newState;
+    }
+    case EDIT_COMMENT: {
+      const newState = { ...state };
+      newState[action.comment.post_id].comments[action.comment.id] =
+        action.comment;
+      return newState;
+    }
+    case DELETE_COMMENT: {
+      const newState = { ...state };
+      delete newState[action.comment.post_id].comments[action.comment.id];
       return newState;
     }
     default:

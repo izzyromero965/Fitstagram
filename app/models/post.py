@@ -13,6 +13,8 @@ class Post(db.Model):
     updatedat = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     postOwner = db.relationship('User', back_populates="posts")
+    comments = db.relationship(
+        'Comment', back_populates='posts', cascade="all,delete-orphan")
 
     def to_dict(self):
         return {
@@ -20,4 +22,5 @@ class Post(db.Model):
             'user_id': self.user_id,
             'content': self.content,
             'image_url': self.image_url,
+            'comments': {comment.to_dict()['id']: comment.to_dict() for comment in self.comments}
         }

@@ -1,38 +1,26 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import { useSelector } from 'react-redux';
+import './Navbar.css';
 
 const NavBar = () => {
+  const user = useSelector((state) => state.session.user);
   return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <LogoutButton />
-        </li>
-      </ul>
+    <nav className="navbar-container">
+      <NavLink to="/home" exact={true} ClassName="active">
+        Fitstagram
+      </NavLink>
+      <div>
+        <NavLink to="/home" exact={true}>
+          <i class="fa-solid fa-house"></i>
+        </NavLink>
+        <i class="fa-solid fa-plus"></i>
+        <img src={user.profile_image_url} className="profile-img"></img>
+        <LogoutButton />
+      </div>
     </nav>
   );
-}
+};
 
 export default NavBar;
