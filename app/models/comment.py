@@ -14,6 +14,7 @@ class Comment(db.Model):
     updatedat = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     commentOwner = db.relationship('User', back_populates="comments")
+    posts = db.relationship('Post', back_populates="comments")
 
     def to_dict(self):
         return {
