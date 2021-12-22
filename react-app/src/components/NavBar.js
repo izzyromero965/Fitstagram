@@ -9,6 +9,7 @@ import CreatePostForm from './CreatePost';
 
 const NavBar = () => {
   const [showModal, setShowModal] = useState(false);
+  const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const onLogout = async (e) => {
     await dispatch(logout());
@@ -35,7 +36,9 @@ const NavBar = () => {
             <CreatePostForm setShowModal={setShowModal} />
           </Modal>
         )}
-        <img src={user?.profile_image_url} className="profile-img"></img>
+        <NavLink to={`/users/${sessionUser?.id}`} exact={true}>
+          <img src={user?.profile_image_url} className="profile-img"></img>
+        </NavLink>
         <button className="logout" onClick={onLogout}>
           Logout
         </button>
