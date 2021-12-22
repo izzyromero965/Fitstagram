@@ -1,12 +1,13 @@
 .profile-img {
   height: 25px;
-  margin-left: 10px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .navbar-container {
   display: flex;
   position: fixed;
-  justify-content: space-around;
+  justify-content: space-evenly;
   border-bottom: 1px solid rgb(224, 224, 224);
   align-items: center;
   height: 60px;
@@ -24,7 +25,10 @@ a {
 
 .icon {
   font-size: 25px;
-  margin-left: 10px;
+  margin-left: 20px;
+}
+.icon:hover {
+  cursor: pointer;
 }
 
 .menu {
@@ -32,7 +36,7 @@ a {
 }
 
 .logout {
-  margin-left: 10px;
+  margin-left: 20px;
   width: 4.5rem;
   border: none;
   background-color: #147af0;

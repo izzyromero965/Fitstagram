@@ -22,6 +22,7 @@ const Search = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         onClick={(e) => setShowResults({ visibility: 'visible' })}
+        className="searchField"
       />
       <div style={showResults}>
         {searchTerm != '' &&

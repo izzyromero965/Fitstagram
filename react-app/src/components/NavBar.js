@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Modal } from './context/Modal';
 import { NavLink } from 'react-router-dom';
-import LogoutButton from './auth/LogoutButton';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../store/session';
 import Search from './Search';
 import './Navbar.css';
+import CreatePostForm from './CreatePost';
 
 const NavBar = () => {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const onLogout = async (e) => {
     await dispatch(logout());
@@ -22,7 +24,17 @@ const NavBar = () => {
         <NavLink to="/home" exact={true}>
           <i className="fa-solid fa-house icon"></i>
         </NavLink>
-        <i class="fas fa-arrow-circle-up icon"></i>
+        <i
+          class="fas fa-arrow-circle-up icon"
+          onClick={() => {
+            setShowModal(true);
+          }}
+        ></i>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <CreatePostForm setShowModal={setShowModal} />
+          </Modal>
+        )}
         <img src={user?.profile_image_url} className="profile-img"></img>
         <button className="logout" onClick={onLogout}>
           Logout
