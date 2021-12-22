@@ -8,7 +8,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   return (
     <nav className="navbar-container">
-      <NavLink to="/home" exact={true} ClassName="active">
+      <NavLink to="/home" exact={true} className="active">
         Fitstagram
       </NavLink>
       <div>
