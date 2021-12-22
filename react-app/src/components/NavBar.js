@@ -18,7 +18,7 @@ const NavBar = () => {
           <i className="fa-solid fa-house"></i>
         </NavLink>
         <i className="fa-solid fa-plus"></i>
-        <img src={user.profile_image_url} className="profile-img"></img>
+        <img src={user?.profile_image_url} className="profile-img"></img>
         <LogoutButton />
       </div>
     </nav>
