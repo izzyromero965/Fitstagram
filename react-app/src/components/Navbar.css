@@ -1,8 +1,37 @@
 .profile-img {
-  height: 20px;
+  height: 25px;
+  margin-left: 10px;
 }
 
 .navbar-container {
   display: flex;
+  position: fixed;
+  justify-content: space-around;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
+  top: 0;
+  z-index: 3;
+  -webkit-box-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.icon {
+  font-size: 25px;
+  margin-left: 10px;
+}
+
+.menu {
+  display: flex;
+}
+
+.logout {
   
 }
+
