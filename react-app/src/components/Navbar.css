@@ -1,8 +1,46 @@
 .profile-img {
-  height: 20px;
+  height: 25px;
+  margin-left: 20px;
+  cursor: pointer;
 }
 
 .navbar-container {
   display: flex;
-  
+  position: fixed;
+  justify-content: space-evenly;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
+  top: 0;
+  z-index: 3;
+  text-decoration: none;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.icon {
+  font-size: 25px;
+  margin-left: 20px;
+}
+.icon:hover {
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+}
+
+.logout {
+  margin-left: 20px;
+  width: 4.5rem;
+  border: none;
+  background-color: #147af0;
+  color: white;
+  border-radius: 5px;
+  padding: 2px;
 }
