@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { loadResults } from '../../store/search';
 
 const Search = () => {
   const dispatch = useDispatch();
   const results = useSelector((state) => state?.searchResults?.users);
   const [searchTerm, setSearchTerm] = useState('');
-  const [results, setResults] = useState({ visibility: 'hidden' });
+  const [showResults, setShowResults] = useState({ visibility: 'hidden' });
 
   useEffect(() => {
     if (searchTerm != '') {
@@ -20,10 +20,10 @@ const Search = () => {
         placeholder="Search"
         type="search"
         value={searchTerm}
-        onChange={(e) => setTerm(e.target.value)}
-        onClick={(e) => setResults({ visibility: 'visible' })}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onClick={(e) => setShowResults({ visibility: 'visible' })}
       />
-      <div style={results}>
+      <div style={showResults}>
         {searchTerm != '' &&
           results?.map((user) => (
             <a key={user?.id} href={`/users/${user.id}`}>

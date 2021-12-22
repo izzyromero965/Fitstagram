@@ -20,11 +20,11 @@ def users():
 
 @user_routes.route('<term>')
 @login_required
-def searchUsers(search):
+def searchUsers(term):
     users = User.query.filter(
         or_(
-            User.nick_name.ilike(f"%{search}%"),
-            User.username.ilike(f"%{search}%")
+            User.nick_name.ilike(f"%{term}%"),
+            User.username.ilike(f"%{term}%")
         )
     ).all()
 
