@@ -23,9 +23,31 @@ const ProfilePage = () => {
     if (!isLoaded) setIsLoaded(true);
   }, [dispatch, userId, sessionUser.id]);
 
+
+
   return (
     <>
       {isLoaded && (
+        <div className="profile-page-container">
+          <div className="profile-info">
+            <div className="profile-img">
+              <img src={profile?.profile_image_url}></img>
+            </div>
+            <div className="profile-description">
+              <div className="username-div">
+                <h2>{profile?.username}</h2>
+              </div>
+              <div className="follower-div">
+                <div>posts</div>
+                <div>followers</div>
+                <div>following</div>
+              </div>
+              <div className="desc-div">{profile?.nick_name}</div>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* {isLoaded && (
         <div>
           {Object.values(profile?.posts)?.map((post, i) => {
             return (
@@ -39,7 +61,7 @@ const ProfilePage = () => {
           })}
           <CreatePostForm />
         </div>
-      )}
+      )} */}
     </>
   );
 };
