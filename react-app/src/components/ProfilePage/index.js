@@ -95,6 +95,19 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
+          <div className="sections">
+            <i className="fas fa-border-all"></i>
+            <h3>POSTS</h3>
+          </div>
+          <div className="images-container">
+            {Object.values(profile?.posts)?.map((post, i) => {
+              return (
+                <div key={i} className="img-div">
+                  <img src={post.image_url} className="post-img"></img>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
       {/* {isLoaded && (

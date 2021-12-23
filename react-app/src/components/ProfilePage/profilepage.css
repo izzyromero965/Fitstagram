@@ -1,7 +1,7 @@
 .profile-page-container {
   padding-top: 5.625rem;
   margin: 0 auto;
-  width: 49.375rem;
+  width: 49rem;
 }
 .profile-info {
   display: flex;
@@ -54,4 +54,37 @@
 }
 .desc-div > h2 {
   font-size: 16px;
+}
+
+.sections {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.sections > h3 {
+  font-size: 15px;
+}
+
+.images-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  height: auto;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.img-div {
+  height: 19rem;
+  width: 19rem;
+  padding: 3rem;
+}
+
+.post-img {
+  object-fit: cover;
+  width: 18rem;
+  height: 18rem;
+  cursor: pointer;
 }
