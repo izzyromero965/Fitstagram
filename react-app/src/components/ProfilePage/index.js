@@ -27,6 +27,10 @@ const ProfilePage = () => {
     await dispatch(loadProfile(userId));
     await dispatch(getSingleUserPosts(userId));
     await dispatch(getFollowedUsers(sessionUser.id));
+    profile.numberOfPosts = 0;
+    for (let post in profile?.posts) {
+      profile.numberOfPosts += 1;
+    }
     if (!isLoaded) setIsLoaded(true);
   }, [dispatch, userId, sessionUser.id]);
 
@@ -51,15 +55,15 @@ const ProfilePage = () => {
     button = null;
   } else if (Number(userId) in follows) {
     button = (
-      <div>
-        <button onClick={handleUnfollow}>Unfollow</button>
-      </div>
+      <button onClick={handleUnfollow} className="followBtn">
+        Unfollow
+      </button>
     );
   } else if (!(Number(userId) in follows)) {
     button = (
-      <div>
-        <button onClick={handleFollow}>Follow</button>
-      </div>
+      <button onClick={handleFollow} className="followBtn">
+        Follow
+      </button>
     );
   }
 
@@ -68,20 +72,27 @@ const ProfilePage = () => {
       {isLoaded && (
         <div className="profile-page-container">
           <div className="profile-info">
-            <div className="profile-img">
-              <img src={profile?.profile_image_url}></img>
-            </div>
-            <div className="profile-description">
-              <div className="username-div">
-                <h2>{profile?.username}</h2>
-                <div>{button}</div>
+            <div className="desc">
+              <div className="profile-img">
+                <img
+                  src={profile?.profile_image_url}
+                  className="profile-pic"
+                ></img>
               </div>
-              <div className="follower-div">
-                <div>posts</div>
-                <div>followers</div>
-                <div>following</div>
+              <div className="profile-description">
+                <div className="username-div">
+                  <h2>{profile?.username}</h2>
+                  {button}
+                </div>
+                <div className="follower-div">
+                  <div>{console.log(profile?.numberOfPosts)} posts</div>
+                  <div>followers</div>
+                  <div>following</div>
+                </div>
+                <div className="desc-div">
+                  <h2>{profile?.nick_name}</h2>
+                </div>
               </div>
-              <div className="desc-div">{profile?.nick_name}</div>
             </div>
           </div>
         </div>
