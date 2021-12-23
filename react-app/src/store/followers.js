@@ -17,11 +17,11 @@ const getFollowed = (follows) => ({
   follows,
 });
 
-export const followUser = (user) => async (dispatch) => {
+export const followUser = (userData) => async (dispatch) => {
   const response = await fetch(`/api/users/follows/new`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(user),
+    body: JSON.stringify(userData),
   });
   if (response.ok) {
     const followedUser = await response.json();
@@ -30,9 +30,9 @@ export const followUser = (user) => async (dispatch) => {
   }
 };
 
-export const unfollowUser = (user) => async (dispatch) => {
+export const unfollowUser = (userData) => async (dispatch) => {
   const response = await fetch(
-    `/api/users/${user.follower_id}/follows/${user.followed_id}/delete`,
+    `/api/users/${userData.follower_id}/follows/${userData.followed_id}/delete`,
     {
       method: 'DELETE',
     }
@@ -44,7 +44,7 @@ export const unfollowUser = (user) => async (dispatch) => {
   }
 };
 
-export const getFollowed = (id) => async (dispatch) => {
+export const getFollowedUsers = (id) => async (dispatch) => {
   const response = await fetch(`/api/users/${id}/follows`);
   if (response.ok) {
     const follows = await response.json();
@@ -59,8 +59,7 @@ const followersReducer = (state = initialState, action) => {
     case FOLLOW: {
       const newState = {
         ...state,
-        ...action,
-        follows,
+        ...action.follows,
       };
       return newState;
     }
