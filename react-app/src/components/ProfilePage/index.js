@@ -8,9 +8,6 @@ import {
 } from '../../store/followers';
 import { getSingleUserPosts } from '../../store/post';
 import { loadProfile } from '../../store/userProfile';
-import CreatePostForm from '../CreatePost';
-import DeletePost from '../DeletePost';
-import EditPost from '../EditPost';
 import './profilepage.css';
 
 const ProfilePage = () => {

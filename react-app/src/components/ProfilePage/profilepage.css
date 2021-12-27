@@ -1,7 +1,7 @@
 .profile-page-container {
   padding-top: 5.625rem;
   margin: 0 auto;
-  width: 49rem;
+  width: 55rem;
 }
 .profile-info {
   display: flex;
@@ -74,17 +74,19 @@
   height: auto;
   margin: 0 auto;
   margin-bottom: 5rem;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 0.5rem;
 }
 
 .img-div {
-  height: 19rem;
-  width: 19rem;
-  padding: 3rem;
+  height: 17rem;
+  width: 17rem;
 }
 
 .post-img {
   object-fit: cover;
-  width: 18rem;
-  height: 18rem;
+  width: 17rem;
+  height: 17rem;
   cursor: pointer;
 }
