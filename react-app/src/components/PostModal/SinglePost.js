@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DeletePostModal from '../DeletePost/DeletePostModal';
+import EditPostModal from '../EditPost/EditPostModal';
 import './postModal.css';
 
 const SinglePost = ({ setShowModal, post }) => {
@@ -15,8 +16,8 @@ const SinglePost = ({ setShowModal, post }) => {
   if (sessionUser.id == post.user_id) {
     buttons = (
       <div className="edit-delete-buttons">
-        <i className="far fa-edit"></i>
-        <DeletePostModal post={post} setShowModal={setShowModal}/>
+        <EditPostModal post={post} setShowModal={setShowModal} />
+        <DeletePostModal post={post} setShowModal={setShowModal} />
       </div>
     );
   }
