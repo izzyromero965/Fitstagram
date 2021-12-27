@@ -1,0 +1,66 @@
+.single-post-container {
+  display: flex;
+  height: 35rem;
+  width: 65rem;
+}
+.single-post-img {
+  height: 35rem;
+  width: 32.5rem;
+  object-fit: contain;
+  background-color: rgb(22, 22, 22);
+  border-top-left-radius: 4.5px;
+  border-bottom-left-radius: 4.5px;
+}
+
+.comments-header {
+  display: flex;
+  height: 4rem;
+  padding: 0.8rem;
+  align-items: center;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  justify-content: space-between;
+}
+.profile-pic-comments {
+  height: 30px;
+  border-radius: 50%;
+}
+
+.profile {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.edit-delete-buttons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  width: 32.5rem;
+}
+
+.profile-link {
+  font-weight: 600;
+  text-transform: lowercase;
+  color: black;
+}
+.profile-link:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+.description {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  align-items: center;
+}
+
+.post-comments {
+  overflow-y: scroll;
+  height: 22rem;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}

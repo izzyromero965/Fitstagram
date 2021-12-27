@@ -8,6 +8,7 @@ import {
 } from '../../store/followers';
 import { getSingleUserPosts } from '../../store/post';
 import { loadProfile } from '../../store/userProfile';
+import SinglePostModal from '../PostModal/PostModal';
 import './profilepage.css';
 
 const ProfilePage = () => {
@@ -100,28 +101,13 @@ const ProfilePage = () => {
             {Object.values(profile?.posts)?.map((post, i) => {
               return (
                 <div key={i} className="img-div">
-                  <img src={post.image_url} className="post-img"></img>
+                  <SinglePostModal post={post} className="post-img" />
                 </div>
               );
             })}
           </div>
         </div>
       )}
-      {/* {isLoaded && (
-        <div>
-          {Object.values(profile?.posts)?.map((post, i) => {
-            return (
-              <div key={i}>
-                <img src={post.image_url} />
-                <div>{post.content}</div>
-                <EditPost id={post.id} />
-                <DeletePost id={post.id} />
-              </div>
-            );
-          })}
-          <CreatePostForm />
-        </div>
-      )} */}
     </>
   );
 };
