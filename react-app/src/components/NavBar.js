@@ -26,7 +26,7 @@ const NavBar = () => {
           <i className="fa-solid fa-house icon"></i>
         </NavLink>
         <i
-          class="fas fa-arrow-circle-up icon"
+          className="fas fa-arrow-circle-up icon"
           onClick={() => {
             setShowModal(true);
           }}

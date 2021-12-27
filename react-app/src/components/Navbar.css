@@ -17,6 +17,7 @@
   top: 0;
   z-index: 3;
   text-decoration: none;
+  background-color: white;
 }
 a {
   text-decoration: none;

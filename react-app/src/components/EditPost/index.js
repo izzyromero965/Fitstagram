@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { editOnePost, getSingleUserPosts } from '../../store/post';
 import { useDispatch, useSelector } from 'react-redux';
 
-const EditPost = ({ id }) => {
+const EditPost = ({ post, setShowModal, setShowwModal }) => {
   const dispatch = useDispatch();
   const [content, setContent] = useState();
   const userid = useSelector((state) => state.session.user.id);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(editOnePost(userid, content, id));
+    dispatch(editOnePost(userid, content, post.id));
     dispatch(getSingleUserPosts(userid));
+    setShowModal(false);
+    setShowwModal(false);
   };
 
   return (

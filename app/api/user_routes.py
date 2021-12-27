@@ -89,7 +89,7 @@ def create_post(id):
 @user_routes.route('/<int:id>/posts/<int:post_id>/edit', methods=["PUT"])
 def edit_post(id, post_id):
     form = EditPost()
-    postToEdit = Post.query.get(int(id))
+    postToEdit = Post.query.get(int(post_id))
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         postToEdit.content = form.data['content']
