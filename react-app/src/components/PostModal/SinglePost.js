@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DeletePost from '../DeletePost';
+import DeletePostModal from '../DeletePost/DeletePostModal';
 import './postModal.css';
 
 const SinglePost = ({ setShowModal, post }) => {
@@ -16,7 +16,7 @@ const SinglePost = ({ setShowModal, post }) => {
     buttons = (
       <div className="edit-delete-buttons">
         <i className="far fa-edit"></i>
-        <DeletePost />
+        <DeletePostModal post={post} setShowModal={setShowModal}/>
       </div>
     );
   }

@@ -173,6 +173,13 @@ const postReducer = (state = initialState, action) => {
       };
       return newState;
     }
+    case GET_USERS_POSTS: {
+      const newState = {
+        ...state,
+        ...action.posts.posts,
+      };
+      return newState;
+    }
     case EDIT_POST: {
       const newState = {
         ...state,
