@@ -67,9 +67,8 @@ const followersReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      if (action.removeData.unfollowed_id in newState) {
-        delete newState[action.removeData.unfollowed_id];
-      }
+      console.log(action);
+      delete newState[action.removeData.unfollowed];
       return newState;
     }
     case GET_FOLLOWED: {

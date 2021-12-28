@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CreateComment from '../CreateComment';
 import DeletePostModal from '../DeletePost/DeletePostModal';
 import EditPostModal from '../EditPost/EditPostModal';
 import './postModal.css';
 
 const SinglePost = ({ setShowModal, post }) => {
-  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const postComments = useSelector(
-    (state) => state.session.user.posts[post.id].comments
-  );
+  const postComments = useSelector((state) => state.posts[post.id].comments);
 
   let buttons;
 
@@ -50,9 +48,12 @@ const SinglePost = ({ setShowModal, post }) => {
           </div>
           <div className="post-comments">
             {Object.values(postComments)?.map((comment) => {
-              return <div>{comment.content}</div>;
+              return <div>{comment?.content}</div>;
             })}
           </div>
+        </div>
+        <div className="create-comment">
+          <CreateComment post={post} />
         </div>
       </div>
     </div>

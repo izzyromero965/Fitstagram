@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { deleteOnePost, getSingleUserPosts } from '../../store/post';
+import { deleteOnePost } from '../../store/post';
 import { useDispatch, useSelector } from 'react-redux';
 import { Modal } from '../context/Modal';
 
@@ -12,7 +12,6 @@ const DeletePostModal = ({ post, setShowModal }) => {
     dispatch(deleteOnePost(user.id, post.id));
     setShowwModal(false);
     setShowModal(false);
-    dispatch(getSingleUserPosts(user.id));
   };
 
   return (

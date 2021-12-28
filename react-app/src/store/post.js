@@ -27,9 +27,9 @@ const editPost = (post) => ({
   post,
 });
 
-const deletePost = (post) => ({
+const deletePost = (id) => ({
   type: DELETE_POST,
-  post,
+  id,
 });
 
 const createComment = (comment) => ({
@@ -112,7 +112,7 @@ export const deleteOnePost = (userid, id) => async (dispatch) => {
   });
   if (response.ok) {
     const post = await response.json();
-    dispatch(deletePost(post));
+    dispatch(deletePost(id));
     return post;
   }
 };
@@ -174,10 +174,13 @@ const postReducer = (state = initialState, action) => {
       return newState;
     }
     case GET_USERS_POSTS: {
+      console.log('BIG STRING.....123123123123', action);
       const newState = {
         ...state,
-        ...action.posts.posts,
       };
+      action.posts.posts.forEach((post) => {
+        newState[post.id] = post;
+      });
       return newState;
     }
     case EDIT_POST: {
@@ -192,11 +195,12 @@ const postReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      delete newState[action.post.id];
+      delete newState[action.id];
       return newState;
     }
     case CREATE_COMMENT: {
       const newState = { ...state };
+      console.log(action);
       newState[action.comment.post_id].comments[action.comment.id] =
         action.comment;
       return newState;

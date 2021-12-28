@@ -98,7 +98,7 @@ const ProfilePage = () => {
             <h3>POSTS</h3>
           </div>
           <div className="images-container">
-            {Object.values(profile?.posts)?.map((post, i) => {
+            {Object.values(posts)?.map((post, i) => {
               return (
                 <div key={i} className="img-div">
                   <SinglePostModal post={post} className="post-img" />
