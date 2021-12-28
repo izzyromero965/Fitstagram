@@ -114,6 +114,15 @@ def myFollowers(id):
     return user.to_dict()['follows']
 
 
+@user_routes.route('<int:id>/followers')
+@login_required
+def getMyFollowers(id):
+    me = User.query.get(id)
+    return {"followers": me.followers}
+
+
+
+
 @user_routes.route('/follows/new', methods=['POST'])
 @login_required
 def createFollow():
