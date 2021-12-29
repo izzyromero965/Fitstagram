@@ -10,3 +10,14 @@
   object-fit: contain;
   background-color: black;
 }
+
+.homepage-container {
+  display: flex;
+  margin-top: 8rem;
+  gap: 2.5rem;
+  justify-content: center;
+}
+.username-nickname {
+  display: flex;
+  flex-direction: column;
+}
