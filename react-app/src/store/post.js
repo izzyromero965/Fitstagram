@@ -169,12 +169,13 @@ const postReducer = (state = initialState, action) => {
     case GET_ALL_POSTS: {
       const newState = {
         ...state,
-        ...action.posts.posts,
       };
+      action.posts.posts.forEach((post) => {
+        newState[post.id] = post;
+      });
       return newState;
     }
     case GET_USERS_POSTS: {
-      console.log('BIG STRING.....123123123123', action);
       const newState = {
         ...state,
       };
@@ -213,6 +214,7 @@ const postReducer = (state = initialState, action) => {
     }
     case DELETE_COMMENT: {
       const newState = { ...state };
+      console.log(action);
       delete newState[action.comment.post_id].comments[action.comment.id];
       return newState;
     }

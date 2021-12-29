@@ -1,0 +1,12 @@
+.profile-pic {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.homepage-post-img {
+  height: 20rem;
+  width: 30rem;
+  object-fit: contain;
+  background-color: black;
+}

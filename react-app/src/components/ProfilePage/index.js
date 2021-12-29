@@ -72,7 +72,7 @@ const ProfilePage = () => {
               <div className="profile-img">
                 <img
                   src={profile?.profile_image_url}
-                  className="profile-pic"
+                  className="profile-picc"
                 ></img>
               </div>
               <div className="profile-description">

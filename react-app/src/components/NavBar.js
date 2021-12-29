@@ -17,14 +17,14 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   return (
     <nav className="navbar-container">
-      <NavLink to="/home" exact={true} className="logo">
+      <a href="/home" className="logo">
         Fitstagram
-      </NavLink>
+      </a>
       <Search />
       <div className="menu">
-        <NavLink to="/home" exact={true}>
+        <a href="/home">
           <i className="fa-solid fa-house icon"></i>
-        </NavLink>
+        </a>
         <i
           className="fas fa-arrow-circle-up icon"
           onClick={() => {

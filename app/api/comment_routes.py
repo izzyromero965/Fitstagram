@@ -24,11 +24,11 @@ def newComment():
 
 
 @comment_routes.route('/<int:comment_id>/edit', methods=['PUT'])
-def editComment(id):
+def editComment(comment_id):
     form = EditComment()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        commentToEdit = Comment.query.get(id)
+        commentToEdit = Comment.query.get(comment_id)
         commentToEdit.content = form.data['content']
         db.session.commit()
         return commentToEdit.to_dict()
@@ -38,8 +38,8 @@ def editComment(id):
 
 @comment_routes.route('/<int:comment_id>/delete', methods=['DELETE'])
 @login_required
-def deleteComment(id):
-    comment = Comment.query.get(id)
+def deleteComment(comment_id):
+    comment = Comment.query.get(comment_id)
     db.session.delete(comment)
     db.session.commit()
-    return {"message": f"Deleted comment {id}"}
+    return {'post_id': comment.post_id, 'id': comment.id}

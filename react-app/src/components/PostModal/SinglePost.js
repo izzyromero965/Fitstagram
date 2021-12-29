@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CreateComment from '../CreateComment';
+import EditAndDeleteComment from '../CreateComment/CommentEditDelete';
 import DeletePostModal from '../DeletePost/DeletePostModal';
 import EditPostModal from '../EditPost/EditPostModal';
 import './postModal.css';
@@ -61,6 +62,7 @@ const SinglePost = ({ setShowModal, post }) => {
                     {comment?.user?.username}
                   </a>
                   {comment?.content}
+                  <EditAndDeleteComment comment={comment} />
                 </div>
               );
             })}
