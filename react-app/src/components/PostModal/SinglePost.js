@@ -1,15 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import CreateComment from '../CreateComment';
+import EditAndDeleteComment from '../CreateComment/CommentEditDelete';
 import DeletePostModal from '../DeletePost/DeletePostModal';
 import EditPostModal from '../EditPost/EditPostModal';
 import './postModal.css';
 
 const SinglePost = ({ setShowModal, post }) => {
-  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
-  const postComments = useSelector(
-    (state) => state.session.user.posts[post.id].comments
-  );
+  const postComments = useSelector((state) => state.posts[post.id].comments);
 
   let buttons;
 
@@ -28,11 +27,11 @@ const SinglePost = ({ setShowModal, post }) => {
         <div className="comments-header">
           <div className="profile">
             <img
-              src={sessionUser.profile_image_url}
+              src={post.user.profile_image_url}
               className="profile-pic-comments"
             />
-            <a href={`/users/${sessionUser.id}`} className="profile-link">
-              {sessionUser.username}
+            <a href={`/users/${post.user.id}`} className="profile-link">
+              {post.user.username}
             </a>
           </div>
           {buttons}
@@ -40,19 +39,37 @@ const SinglePost = ({ setShowModal, post }) => {
         <div className="comments">
           <div className="description">
             <img
-              src={sessionUser.profile_image_url}
+              src={post.user.profile_image_url}
               className="profile-pic-comments"
             />
-            <a href={`/users/${sessionUser.id}`} className="profile-link">
-              {sessionUser.username}
+            <a href={`/users/${post.user_id}`} className="profile-link">
+              {post.user.username}
             </a>
             <span>{post?.content}</span>
           </div>
           <div className="post-comments">
             {Object.values(postComments)?.map((comment) => {
-              return <div>{comment.content}</div>;
+              return (
+                <div className="description">
+                  <img
+                    src={comment?.user?.profile_image_url}
+                    className="profile-pic-comments"
+                  ></img>
+                  <a
+                    href={`/users/${comment?.user?.id}`}
+                    className="profile-link"
+                  >
+                    {comment?.user?.username}
+                  </a>
+                  {comment?.content}
+                  <EditAndDeleteComment comment={comment} />
+                </div>
+              );
             })}
           </div>
+        </div>
+        <div className="create-comment">
+          <CreateComment post={post} />
         </div>
       </div>
     </div>

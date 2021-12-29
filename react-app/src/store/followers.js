@@ -1,6 +1,7 @@
 const FOLLOW = 'followers/FOLLOW';
 const UNFOLLOW = 'followers/UNFOLLOW';
 const GET_FOLLOWED = 'follows/GET_FOLLOWED';
+const GET_FOLLOWERS = 'follows/GET_FOLLOWERS';
 
 const follow = (follows) => ({
   type: FOLLOW,
@@ -15,6 +16,10 @@ const unfollow = (removeData) => ({
 const getFollowed = (follows) => ({
   type: GET_FOLLOWED,
   follows,
+});
+const getFollowers = (followers) => ({
+  type: GET_FOLLOWERS,
+  followers,
 });
 
 export const followUser = (userData) => async (dispatch) => {
@@ -53,6 +58,15 @@ export const getFollowedUsers = (id) => async (dispatch) => {
   }
 };
 
+export const getFollowersThunk = (id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${id}/followers`);
+  if (response.ok) {
+    const followers = await response.json();
+    dispatch(getFollowers(followers));
+    return followers;
+  }
+};
+
 const initialState = {};
 const followersReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -67,9 +81,8 @@ const followersReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      if (action.removeData.unfollowed_id in newState) {
-        delete newState[action.removeData.unfollowed_id];
-      }
+      console.log(action);
+      delete newState[action.removeData.unfollowed];
       return newState;
     }
     case GET_FOLLOWED: {
@@ -77,6 +90,10 @@ const followersReducer = (state = initialState, action) => {
         ...state,
         ...action.follows,
       };
+      return newState;
+    }
+    case GET_FOLLOWERS: {
+      const newState = { ...state, ...action.followers };
       return newState;
     }
     default:

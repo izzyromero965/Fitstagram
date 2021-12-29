@@ -45,3 +45,7 @@ a {
   border-radius: 5px;
   padding: 2px;
 }
+
+.logo {
+  cursor: pointer;
+}

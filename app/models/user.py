@@ -29,7 +29,7 @@ class User(db.Model, UserMixin):
         'Post', back_populates="postOwner", cascade="all, delete-orphan")
 
     comments = db.relationship(
-        'Comment', back_populates="commentOwner", cascade="all, delete-orphan")
+        'Comment', back_populates="commentOwner")
 
     followers = db.relationship(
         "User",
@@ -64,10 +64,18 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'username': self.username.lower(),
             'email': self.email,
             'nick_name': self.nick_name,
             'profile_image_url': self.profile_image_url,
-            'posts': {post.to_dict()['id']: post.to_dict() for post in self.posts},
-            'follows': {user.to_dict()['id']: user.to_dict() for user in self.followers}
+            'posts': {post.id: post.to_dict() for post in self.posts},
+            'follows': {user.id: user.to_dict() for user in self.followers},
+            'followers': {user.id: user.username for user in self.following}
+        }
+
+    def to_dict_comments(self):
+        return {
+            'id': self.id,
+            'username': self.username.lower(),
+            'profile_image_url': self.profile_image_url
         }

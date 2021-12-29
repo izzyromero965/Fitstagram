@@ -11,7 +11,6 @@ const EditPost = ({ post, setShowModal, setShowwModal }) => {
     e.preventDefault();
     dispatch(editOnePost(userid, content, post.id));
     dispatch(getSingleUserPosts(userid));
-    setShowModal(false);
     setShowwModal(false);
   };
 

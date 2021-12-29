@@ -14,11 +14,7 @@ const EditPostModal = ({ post, setShowModal }) => {
       ></i>
       {showModal && (
         <Modal onClose={() => setShowwModal(false)}>
-          <EditPost
-            post={post}
-            setShowModal={setShowModal}
-            setShowwModal={setShowwModal}
-          />
+          <EditPost post={post} setShowwModal={setShowwModal} />
         </Modal>
       )}
     </>

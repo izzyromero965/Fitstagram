@@ -21,6 +21,7 @@ class Post(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'content': self.content,
+            'user': self.postOwner.to_dict_comments(),
             'image_url': self.image_url,
-            'comments': {comment.to_dict()['id']: comment.to_dict() for comment in self.comments}
+            'comments': {comment.id: comment.to_dict() for comment in self.comments}
         }

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   followUser,
   getFollowedUsers,
+  getFollowersThunk,
   unfollowUser,
 } from '../../store/followers';
 import { getSingleUserPosts } from '../../store/post';
@@ -25,10 +26,7 @@ const ProfilePage = () => {
     await dispatch(loadProfile(userId));
     await dispatch(getSingleUserPosts(userId));
     await dispatch(getFollowedUsers(sessionUser.id));
-    profile.numberOfPosts = 0;
-    for (let post in profile?.posts) {
-      profile.numberOfPosts += 1;
-    }
+    // await dispatch(getFollowersThunk(sessionUser.id));
     if (!isLoaded) setIsLoaded(true);
   }, [dispatch, userId, sessionUser.id]);
 
@@ -74,7 +72,7 @@ const ProfilePage = () => {
               <div className="profile-img">
                 <img
                   src={profile?.profile_image_url}
-                  className="profile-pic"
+                  className="profile-picc"
                 ></img>
               </div>
               <div className="profile-description">
@@ -83,9 +81,14 @@ const ProfilePage = () => {
                   {button}
                 </div>
                 <div className="follower-div">
-                  <div>{console.log(profile?.numberOfPosts)} posts</div>
-                  <div>followers</div>
-                  <div>following</div>
+                  <div>{Object.values(posts)?.length} posts</div>
+                  <div>
+                    {Object.values(profile?.followers)?.length}
+                    {Object.values(profile?.followers)?.length > 1
+                      ? ' Followers'
+                      : ' Follower'}
+                  </div>
+                  <div>{Object.values(profile?.follows)?.length} following</div>
                 </div>
                 <div className="desc-div">
                   <h2>{profile?.nick_name}</h2>
@@ -98,7 +101,7 @@ const ProfilePage = () => {
             <h3>POSTS</h3>
           </div>
           <div className="images-container">
-            {Object.values(profile?.posts)?.map((post, i) => {
+            {Object.values(posts)?.map((post, i) => {
               return (
                 <div key={i} className="img-div">
                   <SinglePostModal post={post} className="post-img" />
