@@ -64,7 +64,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'username': self.username.lower(),
             'email': self.email,
             'nick_name': self.nick_name,
             'profile_image_url': self.profile_image_url,
@@ -76,6 +76,6 @@ class User(db.Model, UserMixin):
     def to_dict_comments(self):
         return {
             'id': self.id,
-            'username': self.username,
+            'username': self.username.lower(),
             'profile_image_url': self.profile_image_url
         }

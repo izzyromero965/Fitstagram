@@ -119,7 +119,7 @@ const Homepage = () => {
               </div>
             ))}
           </div>
-          <div className="profile-container">
+          {/* <div className="profile-container">
             <div className="profile-info">
               <img src={sessionUser.profile_image_url}></img>
               <div className="username-nickname">
@@ -130,7 +130,7 @@ const Homepage = () => {
             <div>
               <span>Suggestions For You</span>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     </>
