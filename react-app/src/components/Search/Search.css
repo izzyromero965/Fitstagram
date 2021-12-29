@@ -1,3 +1,23 @@
 .searchField {
   outline: none;
 }
+.results-link {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.search-pic {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.results {
+  background-color: white;
+  border-radius: 3px;
+  overflow-y: auto;
+  max-height: 200px;
+  position: absolute;
+  top: 2.91rem;
+  width: 14.9rem;
+}

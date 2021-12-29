@@ -4,6 +4,7 @@
   justify-content: center;
   height: 90vh;
   align-items: center;
+  margin-top: 5rem;
 }
 
 .header-img-container {
@@ -41,7 +42,6 @@
 
 h1 {
   margin-bottom: 2rem;
-  
 }
 
 .or {
@@ -74,6 +74,5 @@ h1 {
   line-height: 18px;
   color: white;
   background-color: #458eff;
-
-  width: 15.6rem;
+  width: 15rem;
 }
