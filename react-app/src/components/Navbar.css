@@ -2,6 +2,7 @@
   height: 25px;
   margin-left: 20px;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .navbar-container {
