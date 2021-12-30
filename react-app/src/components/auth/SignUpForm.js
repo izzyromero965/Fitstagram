@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import './Signup.css';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
@@ -49,68 +50,110 @@ const SignUpForm = () => {
   };
 
   if (user) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors?.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <div className="signup-container">
+      <form onSubmit={onSignUp} className="signup-form">
+        <div>
+          {errors?.map((error, ind) => (
+            <div key={ind}>{error}</div>
+          ))}
+        </div>
+        <span className="logo">Fitstagram</span>
+        <div className="form-input-div">
+          <div className="label-container">
+            <label>Username:</label>
+          </div>
+          <input
+            type="text"
+            name="username"
+            onChange={updateUsername}
+            value={username}
+            required
+          ></input>
+        </div>
+        <div className="form-input-div">
+          <div className="label-container">
+            <label>Email:</label>
+          </div>
+          <input
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+            required
+          ></input>
+        </div>
+        <div className="form-input-div">
+          <div className="label-container">
+            <label>Password:</label>
+          </div>
+          <input
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+            required
+          ></input>
+        </div>
+        <div className="form-input-div">
+          <div className="label-container">
+            <label>Repeat Password:</label>
+          </div>
+          <input
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <div className="form-input-div">
+          <div className="label-container">
+            <label>Profile Image:</label>
+          </div>
+          <input
+            type="file"
+            accept=".jpg,.jpeg,.png,.gif"
+            onChange={(e) => set_profile_image_url(e.target.files[0])}
+            required
+          />
+        </div>
+        <div className="form-input-div">
+          <div className="label-container">
+            <label>Nickname:</label>
+          </div>
+          <input
+            type="text"
+            name="Nickname"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
+      </form>
+      <div className="login-container">
+        <span>
+          Already have an account? <a href="/">Log in</a>
+        </span>
       </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
+      <div className="splash-footer">
+        <span>Developed by Israel Romero</span>
+        <div className="splash-icons">
+          <a href="https://github.com/snakedreamz">
+            <i className="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/israel-romero-917a54219/">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
       </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-        <label>Profile Image</label>
-        <input
-          type="file"
-          accept=".jpg,.jpeg,.png,.gif"
-          onChange={(e) => set_profile_image_url(e.target.files[0])}
-        />
-        <label>Nickname</label>
-        <input
-          type="text"
-          name="Nickname"
-          value={nickname}
-          onChange={(e) => setNickname(e.target.value)}
-        />
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    </div>
   );
 };
 

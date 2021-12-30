@@ -1,5 +1,6 @@
 .profile-img {
   height: 25px;
+  width: 25px;
   margin-left: 20px;
   cursor: pointer;
   border-radius: 50%;
@@ -49,6 +50,8 @@ a {
 
 .logo {
   cursor: pointer;
+  font-family: 'Pushster', cursive;
+  font-size: 25px;
 }
 
 .search-div {
