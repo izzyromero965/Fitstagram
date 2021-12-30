@@ -29,21 +29,23 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
       <Switch>
+        <Route path="/" exact={true}>
+          <SplashPage />
+        </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm />
         </Route>
         <ProtectedRoute path="/users" exact={true}>
+          <NavBar />
           <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path="/users/:userId" exact={true}>
+          <NavBar />
           <ProfilePage />
         </ProtectedRoute>
-        <Route path="/" exact={true}>
-          <SplashPage />
-        </Route>
         <ProtectedRoute path="/home" exact={true}>
+          <NavBar />
           <Homepage />
         </ProtectedRoute>
       </Switch>
