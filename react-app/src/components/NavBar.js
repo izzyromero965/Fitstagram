@@ -17,9 +17,11 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   return (
     <nav className="navbar-container">
-      <a href="/home" className="logo">
-        Fitstagram
-      </a>
+      <div classname="logo-container">
+        <a href="/home" className="logo">
+          Fitstagram
+        </a>
+      </div>
       <div className="search-div">
         <Search />
       </div>
