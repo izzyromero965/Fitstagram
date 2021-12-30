@@ -29,7 +29,6 @@
 .top-description {
   display: flex;
   flex-direction: column;
-  /* background-color: chocolate; */
   margin-top: 0.5rem;
   height: 23rem;
   width: 22rem;
@@ -38,10 +37,26 @@
   border: rgb(218, 218, 218);
   border-width: 0.1px;
   border-style: solid;
+  background-color: white;
 }
 
-h1 {
-  margin-bottom: 2rem;
+.description-title {
+  font-size: 2rem;
+}
+.title {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-direction: column;
+  height: 5rem;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.title > span {
+  color: rgb(145, 145, 145);
+  font-weight: 540;
+  line-height: 20px;
 }
 
 .or {
@@ -51,12 +66,14 @@ h1 {
   margin-bottom: 0.8rem;
   width: 15.5rem;
   justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .dash {
+  background-color: #efefef;
   height: 1px;
-  border: 0 solid #000;
-  width: 5rem;
+  width: 8rem;
 }
 
 .demoBtn {
@@ -75,4 +92,58 @@ h1 {
   color: white;
   background-color: #458eff;
   width: 15rem;
+}
+
+.signup-div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+  height: 4rem;
+  width: 22rem;
+  margin-left: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border: rgb(218, 218, 218);
+  border-width: 0.1px;
+  border-style: solid;
+  background-color: white;
+}
+.signup-div > span > a {
+  color: #458eff;
+}
+
+.description-title {
+  font-family: 'Pushster', cursive;
+}
+.orSpan {
+  font-size: 14px;
+  color: rgb(145, 145, 145);
+}
+
+.splash-footer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 22rem;
+  margin-left: 1.5rem;
+}
+.splash-footer > span {
+  font-size: 12px;
+  color: rgb(145, 145, 145);
+  text-align: center;
+}
+.splash-icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.workout-gif {
+  position: relative;
+  object-fit: cover;
+  top: 96px;
+  left: 143px;
+  height: 27.18rem;
+  width: 16rem;
 }

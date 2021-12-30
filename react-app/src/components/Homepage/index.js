@@ -15,24 +15,34 @@ const HomepagePost = ({ post }) => {
       return (
         <>
           <div className="profile">
-            <img
+            {/* <img
               src={postArr[postArr.length - 1].user.profile_image_url}
               className="profile-pic"
-            />
-            <a href={`/users/${postArr[postArr.length - 1].user.id}`}>
+            /> */}
+            <a
+              href={`/users/${postArr[postArr.length - 1].user.id}`}
+              className="comment-username"
+            >
               {postArr[0].user.username}
             </a>
-            {postArr[postArr.length - 1].content}
+            <span className="comment-content">
+              {postArr[postArr.length - 1].content}{' '}
+            </span>
           </div>
           <div className="profile">
-            <img
+            {/* <img
               src={postArr[postArr.length - 2].user.profile_image_url}
               className="profile-pic"
-            />
-            <a href={`/users/${postArr[postArr.length - 2].user.id}`}>
+            /> */}
+            <a
+              href={`/users/${postArr[postArr.length - 2].user.id}`}
+              className="comment-username"
+            >
               {postArr[0].user.username}
             </a>
-            {postArr[postArr.length - 2].content}
+            <span className="comment-content">
+              {postArr[postArr.length - 2].content}
+            </span>
           </div>
         </>
       );
@@ -40,14 +50,17 @@ const HomepagePost = ({ post }) => {
       return (
         <>
           <div className="profile">
-            <img
+            {/* <img
               src={postArr[0].user.profile_image_url}
               className="profile-pic"
-            />
-            <a href={`/users/${postArr[0].user.id}`}>
+            /> */}
+            <a
+              href={`/users/${postArr[0].user.id}`}
+              className="comment-username"
+            >
               {postArr[0].user.username}
             </a>
-            {postArr[0].content}
+            <span className="comment-content">{postArr[0].content}</span>
           </div>
         </>
       );
@@ -57,21 +70,30 @@ const HomepagePost = ({ post }) => {
   return (
     <div className="homepage-post-container">
       <div className="homepage-post-header">
-        <div className="profile">
+        <div className="homepage-post-profile">
           <img src={post?.user.profile_image_url} className="profile-pic" />
-          <a href={`/users/${post.user.id}`}>{post.user.username}</a>
+          <a href={`/users/${post.user.id}`} className="profile-username">
+            {post.user.username}
+          </a>
         </div>
         <img
           src={`${post.image_url}`}
           className="homepage-post-img"
           onClick={() => setShowModal(true)}
         ></img>
-        <div>
-          <a href={`/users/${post?.user?.id}`}>{post?.user?.username} </a>
-          <span>{post?.content}</span>
+        <div className="post-description-user">
+          <a
+            href={`/users/${post?.user?.id}`}
+            className="profile-username-desc"
+          >
+            {post?.user?.username}
+          </a>
+          <span className="post-description">{post?.content}</span>
         </div>
-        <div onClick={() => setShowModal(true)}>View all comments</div>
         {postCheker(Object.values(post.comments))}
+        <div onClick={() => setShowModal(true)} className="view-comments-div">
+          <span className="view-comment-span">View all comments...</span>
+        </div>
         <CreateComment
           post={post}
           showModal={showModal}
