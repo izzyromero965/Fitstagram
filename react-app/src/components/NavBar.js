@@ -20,7 +20,9 @@ const NavBar = () => {
       <a href="/home" className="logo">
         Fitstagram
       </a>
-      <Search />
+      <div className="search-div">
+        <Search />
+      </div>
       <div className="menu">
         <a href="/home">
           <i className="fa-solid fa-house icon"></i>
@@ -36,12 +38,16 @@ const NavBar = () => {
             <CreatePostForm setShowModal={setShowModal} />
           </Modal>
         )}
-        <NavLink to={`/users/${sessionUser?.id}`} exact={true}>
-          <img src={user?.profile_image_url} className="profile-img"></img>
-        </NavLink>
-        <button className="logout" onClick={onLogout}>
-          Logout
-        </button>
+        {sessionUser && (
+          <>
+            <NavLink to={`/users/${sessionUser?.id}`} exact={true}>
+              <img src={user?.profile_image_url} className="profile-img"></img>
+            </NavLink>
+            <button className="logout" onClick={onLogout}>
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );

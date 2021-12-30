@@ -50,3 +50,7 @@ a {
 .logo {
   cursor: pointer;
 }
+
+.search-div {
+  position: relative;
+}
