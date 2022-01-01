@@ -4,6 +4,7 @@
   margin-left: 20px;
   cursor: pointer;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .navbar-container {
@@ -25,6 +26,9 @@ a {
   text-decoration: none;
   color: black;
 }
+a:hover {
+  color: black;
+}
 
 .icon {
   font-size: 25px;
@@ -32,6 +36,7 @@ a {
 }
 .icon:hover {
   cursor: pointer;
+  color: black;
 }
 
 .menu {
@@ -53,7 +58,12 @@ a {
   font-family: 'Pushster', cursive;
   font-size: 25px;
 }
+.logo:hover {
+  text-decoration: none;
+  color: black;
+}
 
 .search-div {
   position: relative;
 }
+

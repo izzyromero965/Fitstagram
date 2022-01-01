@@ -21,3 +21,12 @@
   top: 2.91rem;
   width: 14.9rem;
 }
+
+.results-container {
+  display: flex;
+  margin: 0.5rem;
+  gap: 1rem;
+}
+.results-desc-container {
+  margin-left: 0.5rem;
+}
