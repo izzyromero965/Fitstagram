@@ -17,24 +17,27 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   return (
     <nav className="navbar-container">
-      <div classname="logo-container">
-        <a href="/home" className="logo">
+      <div className="logo-container">
+        <NavLink to="/home" className="logo">
           Fitstagram
-        </a>
+        </NavLink>
       </div>
       <div className="search-div">
         <Search />
       </div>
       <div className="menu">
-        <a href="/home">
+        <NavLink to="/home">
           <i className="fa-solid fa-house icon"></i>
-        </a>
+        </NavLink>
         <i
           className="fas fa-arrow-circle-up icon"
           onClick={() => {
             setShowModal(true);
           }}
         ></i>
+        <NavLink to="/discover">
+          <i className="fas fa-eye icon"></i>
+        </NavLink>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <CreatePostForm setShowModal={setShowModal} />

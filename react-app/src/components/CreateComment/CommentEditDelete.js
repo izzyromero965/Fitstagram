@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAcomment } from '../../store/post';
 import EditComment from '../EditComment';
+import './CreateComment.css';
 
 const EditAndDeleteComment = ({ comment }) => {
   const dispatch = useDispatch();
@@ -10,18 +11,21 @@ const EditAndDeleteComment = ({ comment }) => {
   const profile = useSelector((state) => state.profile);
   let editDeleteButtons;
 
-  const handleDelete = (e) => {
-    dispatch(deleteAcomment(e.target.value));
+  const handleDelete = () => {
+    console.log(comment.id);
+    dispatch(deleteAcomment(comment.id));
   };
 
   const checkUser = (comment) => {
     if (sessionUser.id === comment?.user?.id || sessionUser.id === profile.id) {
       editDeleteButtons = (
-        <div>
-          <button onClick={() => setShowEdit(true)}>Edit</button>
-          <button onClick={handleDelete} value={comment?.id}>
-            Delete
-          </button>
+        <div className="edit-delete-icons">
+          <i className="fas fa-edit" onClick={() => setShowEdit(true)}></i>
+          <i
+            className="far fa-trash-alt"
+            onClick={handleDelete}
+            value={comment?.id}
+          ></i>
         </div>
       );
     }

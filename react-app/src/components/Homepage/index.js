@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createAComment, getPosts } from '../../store/post';
+import { getPosts } from '../../store/post';
 import { getFollowedUsers } from '../../store/followers';
 import { Modal } from '../context/Modal';
 import SinglePost from '../PostModal/SinglePost';
 import CreateComment from '../CreateComment';
 import './homepage.css';
 
-const HomepagePost = ({ post }) => {
+export const HomepagePost = ({ post }) => {
   const [showModal, setShowModal] = useState(false);
 
   const postCheker = (postArr) => {
@@ -143,16 +143,27 @@ const Homepage = () => {
           </div>
           {/* <div className="profile-container">
             <div className="profile-info">
-              <img src={sessionUser.profile_image_url}></img>
+              <img
+                src={sessionUser.profile_image_url}
+                className="profile-image"
+              ></img>
               <div className="username-nickname">
                 <a href={`/users/${sessionUser.id}`}>{sessionUser.username}</a>
                 <span>{sessionUser.nick_name}</span>
               </div>
             </div>
-            <div>
-              <span>Suggestions For You</span>
-            </div>
           </div> */}
+          <div className="homepage-footer">
+            <span>Developed by Israel Romero</span>
+            <div className="splash-icons">
+              <a href="https://github.com/snakedreamz">
+                <i className="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/israel-romero-917a54219/">
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </>

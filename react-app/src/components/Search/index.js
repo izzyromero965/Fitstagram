@@ -10,7 +10,7 @@ const Search = () => {
   const [showResults, setShowResults] = useState({ visibility: 'hidden' });
 
   useEffect(() => {
-    if (searchTerm != '') {
+    if (searchTerm !== '') {
       dispatch(loadResults(searchTerm));
     }
   }, [dispatch, searchTerm]);
@@ -28,17 +28,21 @@ const Search = () => {
       <div style={showResults} className="results">
         {searchTerm !== '' &&
           results?.map((user) => (
-            <a
-              key={user?.id}
-              href={`/users/${user.id}`}
-              className="results-link"
-            >
-              <img src={user?.profile_image_url} className="search-pic" />
-              <div>
-                <div>{user?.username}</div>
-                <div>{user?.nick_name}</div>
-              </div>
-            </a>
+            <div className="results-container">
+              <a
+                key={user?.id}
+                href={`/users/${user.id}`}
+                className="results-link"
+              >
+                <img src={user?.profile_image_url} className="search-pic" />
+                <div className="results-desc-container">
+                  <div className="username-container">
+                    <span className="search-username"> {user?.username}</span>
+                    <span className="search-nickname">{user?.nick_name}</span>
+                  </div>
+                </div>
+              </a>
+            </div>
           ))}
       </div>
     </div>

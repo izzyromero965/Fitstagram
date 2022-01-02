@@ -1,3 +1,20 @@
 .delete-post {
   cursor: pointer;
 }
+.delete-post-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 10rem;
+  width: 25rem;
+  align-items: center;
+}
+
+.delete-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(192, 0, 0);
+  color: white;
+  height: 2rem;
+  width: 5rem;
+}

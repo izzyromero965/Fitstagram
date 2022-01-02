@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import CreateComment from '../CreateComment';
 import EditAndDeleteComment from '../CreateComment/CommentEditDelete';
 import DeletePostModal from '../DeletePost/DeletePostModal';
@@ -12,7 +11,7 @@ const SinglePost = ({ setShowModal, post }) => {
 
   let buttons;
 
-  if (sessionUser.id == post.user_id) {
+  if (sessionUser.id === post.user_id) {
     buttons = (
       <div className="edit-delete-buttons">
         <EditPostModal post={post} setShowModal={setShowModal} />

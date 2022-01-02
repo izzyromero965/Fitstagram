@@ -57,17 +57,19 @@ export const createPost = (formdata) => async (dispatch) => {
       body: formdata,
     }
   );
-  console.log('this is response', response);
+  console.log(response);
   if (response.ok) {
     const post = await response.json();
     dispatch(newPost(post));
-  } else if (response.status < 500) {
+  } else if (!response.ok) {
     const data = await response.json();
     if (data.errors) {
       return data.errors;
     }
   } else {
-    return ['An error occurred. Please try again.'];
+    return [
+      'An error occurred. Please check you have selected a file and described your image.',
+    ];
   }
 };
 
@@ -176,12 +178,11 @@ const postReducer = (state = initialState, action) => {
       return newState;
     }
     case GET_USERS_POSTS: {
-      const newState = {
-        ...state,
-      };
+      const newState = {};
       action.posts.posts.forEach((post) => {
         newState[post.id] = post;
       });
+      console.log(newState);
       return newState;
     }
     case EDIT_POST: {
