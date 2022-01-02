@@ -34,14 +34,16 @@ const Discover = () => {
   return (
     <div className="discover-container">
       <span>Discover users around the world!</span>
-      {Object.values(posts)?.map((post, i) => {
-        if (post.user_id !== sessionUser.id)
-          return (
-            <div key={i}>
-              <DiscoverPost post={post} />
-            </div>
-          );
-      })}
+      <div className="posts-container">
+        {Object.values(posts)?.map((post, i) => {
+          if (post.user_id !== sessionUser.id)
+            return (
+              <div key={i}>
+                <DiscoverPost post={post} />
+              </div>
+            );
+        })}
+      </div>
     </div>
   );
 };
