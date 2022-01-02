@@ -28,11 +28,10 @@ const initialState = {};
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW: {
-      console.log('xxxxxx12132132', action);
       const newState = {
         ...state,
       };
-      let followArray = Object.values(action.follows)
+      let followArray = Object.values(action.follows);
       newState.followers[action.follows.follower_id] = action.follows;
       return newState;
     }
