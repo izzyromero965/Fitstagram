@@ -21,7 +21,7 @@ const CreatePostForm = ({ setShowModal }) => {
     if (!data) {
       setShowModal(false);
     } else if (data) {
-      console.log('this is data', data);
+    
       setErrors(data);
     }
   };

@@ -81,7 +81,7 @@ const followersReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      console.log(action);
+   
       delete newState[action.removeData.unfollowed];
       return newState;
     }

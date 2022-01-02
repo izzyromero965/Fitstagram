@@ -12,7 +12,6 @@ const EditAndDeleteComment = ({ comment }) => {
   let editDeleteButtons;
 
   const handleDelete = () => {
-    console.log(comment.id);
     dispatch(deleteAcomment(comment.id));
   };
 

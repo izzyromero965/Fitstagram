@@ -49,7 +49,7 @@ const deleteComment = (comment) => ({
 
 // Creates a post
 export const createPost = (formdata) => async (dispatch) => {
-  console.log('XXXXXXX this is it =====>', formdata.get('user_id'));
+
   const response = await fetch(
     `/api/users/${formdata.get('user_id')}/posts/new`,
     {
@@ -57,7 +57,7 @@ export const createPost = (formdata) => async (dispatch) => {
       body: formdata,
     }
   );
-  console.log(response);
+
   if (response.ok) {
     const post = await response.json();
     dispatch(newPost(post));
@@ -182,7 +182,7 @@ const postReducer = (state = initialState, action) => {
       action.posts.posts.forEach((post) => {
         newState[post.id] = post;
       });
-      console.log(newState);
+
       return newState;
     }
     case EDIT_POST: {
@@ -202,7 +202,7 @@ const postReducer = (state = initialState, action) => {
     }
     case CREATE_COMMENT: {
       const newState = { ...state };
-      console.log(action);
+
       newState[action.comment.post_id].comments[action.comment.id] =
         action.comment;
       return newState;
@@ -215,7 +215,7 @@ const postReducer = (state = initialState, action) => {
     }
     case DELETE_COMMENT: {
       const newState = { ...state };
-      console.log(action);
+
       delete newState[action.comment.post_id].comments[action.comment.id];
       return newState;
     }

@@ -25,7 +25,6 @@ const SignUpForm = () => {
       formData.append('email', email);
       formData.append('password', password);
       formData.append('nick_name', nickname);
-      console.log('XXXXXXXXXXXXXXXXX', formData.get('profile_image_url'));
       const data = await dispatch(signUp(formData));
       if (data) {
         setErrors(data);
