@@ -9,10 +9,25 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password', nick_name='lilMarnie', profile_image_url='https://i.pinimg.com/564x/e1/03/ee/e103ee29c6021c079f56c5390e648d03.jpg')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password', nick_name="bobbie brown", profile_image_url="https://i.pinimg.com/originals/b3/94/eb/b394ebdb69a1361b3ea8391b2c104170.jpg")
-
+    nikeRunClub = User(
+        username="nikerunclub", email="nrc@aa.io", password='password', nick_name="NRC", profile_image_url="https://i.scdn.co/image/ab6775700000ee854e817c54eaaec4b4fb4168b0"
+    )
+    adidas = User(
+        username="adidas", email="adidas@aa.io", password='password', nick_name="Adidas Official", profile_image_url="https://www.babyshop.com/images/768123/card_xlarge.jpg"
+    )
+    lionelSanders = User(
+        username="lsanderstri", email="lionel@aa.io", password="password", nick_name="Lionel Sanders", profile_image_url="https://yt3.ggpht.com/ytc/AKedOLRkoJq3UrrIJODgII5YR6eg6qwUcdB7bA9XG3Hq=s900-c-k-c0x00ffffff-no-rj"
+    )
+    lucyCharles = User(
+        username="lucycharles93", email='lucky@aa.io', password="password", nick_name="Lucy Charles", profile_image_url="https://img.redbull.com/images/c_limit,w_1500,h_1000,f_auto,q_auto/redbullcom/2021/7/22/jwzgimx0rxuuugfd0zs9/lucy-charles-barclay-2021"
+    )
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(nikeRunClub)
+    db.session.add(adidas)
+    db.session.add(lionelSanders)
+    db.session.add(lucyCharles)
 
     db.session.commit()
 
