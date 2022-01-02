@@ -36,8 +36,10 @@ const Search = () => {
               >
                 <img src={user?.profile_image_url} className="search-pic" />
                 <div className="results-desc-container">
-                  <div>{user?.username}</div>
-                  <div>{user?.nick_name}</div>
+                  <div className="username-container">
+                    <span className="search-username"> {user?.username}</span>
+                    <span className="search-nickname">{user?.nick_name}</span>
+                  </div>
                 </div>
               </a>
             </div>

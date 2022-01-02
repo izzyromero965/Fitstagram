@@ -18,10 +18,12 @@ const EditAndDeleteComment = ({ comment }) => {
     if (sessionUser.id === comment?.user?.id || sessionUser.id === profile.id) {
       editDeleteButtons = (
         <div>
-          <button onClick={() => setShowEdit(true)}>Edit</button>
-          <button onClick={handleDelete} value={comment?.id}>
-            Delete
-          </button>
+          <i class="fas fa-edit" onClick={() => setShowEdit(true)}></i>
+          <i
+            class="far fa-trash-alt"
+            onClick={handleDelete}
+            value={comment?.id}
+          ></i>
         </div>
       );
     }

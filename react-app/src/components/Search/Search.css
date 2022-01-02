@@ -11,9 +11,10 @@
   width: 30px;
   border-radius: 50%;
   object-fit: cover;
+  margin-left: 0.5rem;
 }
 .results {
-  background-color: white;
+  background-color: rgb(40, 40, 40);
   border-radius: 3px;
   overflow-y: auto;
   max-height: 200px;
@@ -24,9 +25,24 @@
 
 .results-container {
   display: flex;
-  margin: 0.5rem;
   gap: 1rem;
+  border: 0.1px solid grey;
 }
 .results-desc-container {
   margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.username-container {
+  display: flex;
+  flex-direction: column;
+}
+.search-username {
+  font-weight: 600;
+  color: white;
+}
+.search-nickname {
+  font-size: 12px;
+  color: rgb(73, 73, 73);
 }

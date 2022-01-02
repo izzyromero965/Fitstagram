@@ -6,8 +6,8 @@
 .single-post-img {
   height: 35rem;
   width: 32.5rem;
-  object-fit: contain;
-  background-color: rgb(22, 22, 22);
+  object-fit: cover;
+  background-color: rgb(231, 229, 229);
   border-top-left-radius: 4.5px;
   border-bottom-left-radius: 4.5px;
 }
@@ -17,7 +17,7 @@
   height: 4rem;
   padding: 0.8rem;
   align-items: center;
-  border-bottom: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid rgb(73, 73, 73);
   justify-content: space-between;
 }
 .profile-pic-comments {
@@ -41,16 +41,17 @@
   display: flex;
   flex-direction: column;
   width: 32.5rem;
+  background-color: rgb(22, 22, 22);
 }
 
 .profile-link {
   font-weight: 600;
   text-transform: lowercase;
-  color: black;
+  color: white;
 }
 .profile-link:hover {
   text-decoration: underline;
-  color: black;
+  color: white;
 }
 
 .description {
@@ -63,5 +64,5 @@
 .post-comments {
   overflow-y: scroll;
   height: 24rem;
-  border-bottom: 1px solid rgb(224, 224, 224);
+  border-bottom: 1px solid rgb(73, 73, 73);
 }
