@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { createPost } from '../../store/post';
+import './createPost.css';
 
 const CreatePostForm = () => {
   const [errors, setErrors] = useState([]);
@@ -26,27 +27,32 @@ const CreatePostForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="upload-image-form">
       <div>
         {errors?.map((error, i) => {
           <div key={i}>{error}</div>;
         })}
       </div>
-      <div>
-        <label>Description</label>
-        <textarea
-          onChange={(e) => setContent(e.target.value)}
-          value={content}
-          name="description"
-        />
-        <label>Image</label>
+      <div className="upload-post-div">
+        <label>Choose an image</label>
         <input
           type="file"
           accept=".jpg,.jpeg,.png,.gif"
           onChange={(e) => setImage_url(e.target.files[0])}
+          className="image-input"
+        />
+        <label>Describe your image</label>
+        <textarea
+          onChange={(e) => setContent(e.target.value)}
+          value={content}
+          name="description"
+          placeholder="Description..."
+          className="description-input"
         />
       </div>
-      <button type="submit">upload</button>
+      <button type="submit" className="upload-button">
+        upload
+      </button>
     </form>
   );
 };
