@@ -16,6 +16,9 @@ const EditComment = ({ comment, setShowEdit }) => {
     dispatch(editAComment(payload));
     setShowEdit(false);
   };
+  const hideEdit = () => {
+    setShowEdit(false);
+  };
 
   return (
     <div>
@@ -23,11 +26,13 @@ const EditComment = ({ comment, setShowEdit }) => {
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
+          required
         />
         <button type="submit">Submit</button>
+        <button onClick={hideEdit}>Cancel</button>
       </form>
     </div>
   );
 };
 
-export default EditComment
+export default EditComment;

@@ -90,4 +90,10 @@
   width: 17rem;
   height: 17rem;
   cursor: pointer;
+  filter: brightness(100%);
+}
+
+.post-img:hover {
+  filter: brightness(70%);
+  transition: all 0.5s ease;
 }

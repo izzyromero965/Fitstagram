@@ -18,23 +18,26 @@ const NavBar = () => {
   return (
     <nav className="navbar-container">
       <div className="logo-container">
-        <a href="/home" className="logo">
+        <NavLink to="/home" className="logo">
           Fitstagram
-        </a>
+        </NavLink>
       </div>
       <div className="search-div">
         <Search />
       </div>
       <div className="menu">
-        <a href="/home">
+        <NavLink to="/home">
           <i className="fa-solid fa-house icon"></i>
-        </a>
+        </NavLink>
         <i
           className="fas fa-arrow-circle-up icon"
           onClick={() => {
             setShowModal(true);
           }}
         ></i>
+        <NavLink to="/discover">
+          <i className="fas fa-eye icon"></i>
+        </NavLink>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <CreatePostForm setShowModal={setShowModal} />

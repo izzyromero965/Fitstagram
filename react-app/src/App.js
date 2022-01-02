@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import ProfilePage from './components/ProfilePage';
 import SplashPage from './components/Splashpage';
 import Homepage from './components/Homepage';
+import Discover from './components/Discover';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,10 @@ function App() {
         <ProtectedRoute path="/home" exact={true}>
           <NavBar />
           <Homepage />
+        </ProtectedRoute>
+        <ProtectedRoute path="/discover" exact={true}>
+          <NavBar />
+          <Discover />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

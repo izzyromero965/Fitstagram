@@ -7,7 +7,7 @@ import SinglePost from '../PostModal/SinglePost';
 import CreateComment from '../CreateComment';
 import './homepage.css';
 
-const HomepagePost = ({ post }) => {
+export const HomepagePost = ({ post }) => {
   const [showModal, setShowModal] = useState(false);
 
   const postCheker = (postArr) => {
