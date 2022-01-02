@@ -83,7 +83,7 @@ def create_post(id):
         db.session.commit()
         return newPost.to_dict()
     else:
-        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @user_routes.route('/<int:id>/posts/<int:post_id>/edit', methods=["PUT"])
@@ -119,8 +119,6 @@ def myFollowers(id):
 def getMyFollowers(id):
     me = User.query.get(id)
     return {"followers": me.followers}
-
-
 
 
 @user_routes.route('/follows/new', methods=['POST'])

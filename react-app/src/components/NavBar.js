@@ -17,7 +17,7 @@ const NavBar = () => {
   const user = useSelector((state) => state.session.user);
   return (
     <nav className="navbar-container">
-      <div classname="logo-container">
+      <div className="logo-container">
         <a href="/home" className="logo">
           Fitstagram
         </a>

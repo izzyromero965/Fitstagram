@@ -10,7 +10,7 @@ const Search = () => {
   const [showResults, setShowResults] = useState({ visibility: 'hidden' });
 
   useEffect(() => {
-    if (searchTerm != '') {
+    if (searchTerm !== '') {
       dispatch(loadResults(searchTerm));
     }
   }, [dispatch, searchTerm]);

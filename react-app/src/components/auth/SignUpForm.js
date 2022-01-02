@@ -149,7 +149,7 @@ const SignUpForm = () => {
             <i className="fab fa-github"></i>
           </a>
           <a href="https://www.linkedin.com/in/israel-romero-917a54219/">
-            <i class="fab fa-linkedin"></i>
+            <i className="fab fa-linkedin"></i>
           </a>
         </div>
       </div>

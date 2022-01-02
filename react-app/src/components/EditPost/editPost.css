@@ -1,0 +1,27 @@
+.edit-post-form {
+  height: 13rem;
+  width: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.edit-post-input {
+  resize: none;
+  height: 5rem;
+  width: 15rem;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.edit-post-button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: rgb(1, 150, 1);
+  color: white;
+  height: 2rem;
+  width: 5rem;
+}
