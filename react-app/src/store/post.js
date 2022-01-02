@@ -176,12 +176,11 @@ const postReducer = (state = initialState, action) => {
       return newState;
     }
     case GET_USERS_POSTS: {
-      const newState = {
-        ...state,
-      };
+      const newState = {};
       action.posts.posts.forEach((post) => {
         newState[post.id] = post;
       });
+      console.log(newState);
       return newState;
     }
     case EDIT_POST: {
