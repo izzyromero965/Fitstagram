@@ -66,3 +66,7 @@
   height: 24rem;
   border-bottom: 1px solid rgb(73, 73, 73);
 }
+
+.comment-span {
+  word-wrap: break-word;
+}

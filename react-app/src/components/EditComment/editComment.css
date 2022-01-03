@@ -1,0 +1,17 @@
+.edit-submit-btn {
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  height: 2rem;
+  width: 5rem;
+}
+.edit-comment-form {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.comment-edit-input {
+  resize: none;
+  height: 4rem;
+  outline: none;
+}

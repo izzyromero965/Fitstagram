@@ -10,27 +10,37 @@ const CreatePostForm = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
 
+  const validate = () => {
+    const validationErrors = [];
+    if (!content) {
+      validationErrors.push('Must have content');
+    }
+    if (!image_url) {
+      validationErrors.push('Must have a picture');
+    }
+    return validationErrors;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrors([]);
+    const errors = validate();
+    if (errors.length > 0) {
+      return setErrors(errors);
+    }
     const formData = new FormData();
     formData.append('image_url', image_url);
     formData.append('content', content);
     formData.append('user_id', +user.id);
+
     const data = await dispatch(createPost(formData));
-    if (!data) {
-      setShowModal(false);
-    } else if (data) {
-    
-      setErrors(data);
-    }
+    setShowModal(false);
   };
 
   return (
     <form onSubmit={handleSubmit} className="upload-image-form">
       <div className="errors-div">
         {errors?.map((error, i) => {
-          <div key={i}>{error}</div>;
+          return <div key={i}>{error}</div>;
         })}
       </div>
       <div className="upload-post-div">
