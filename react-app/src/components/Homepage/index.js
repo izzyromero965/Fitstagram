@@ -120,7 +120,7 @@ const Homepage = () => {
   useEffect(async () => {
     await dispatch(getPosts());
     await dispatch(getFollowedUsers(sessionUser.id));
-    setIsLoaded(true);
+    await setIsLoaded(true);
   }, [dispatch, sessionUser.id]);
 
   const followed_posts_arr = [];
