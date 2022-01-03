@@ -85,12 +85,6 @@ const ProfilePage = () => {
                     {Object.values(posts)?.length}
                     {Object.values(posts)?.length > 1 ? ' Posts' : ' Post'}
                   </div>
-                  {/* <div>
-                    {Object.values(profile?.followers)?.length}
-                    {Object.values(profile?.followers)?.length > 1
-                      ? ' Followers'
-                      : ' Follower'}
-                  </div> */}
                   <div>{Object.values(profile?.follows)?.length} following</div>
                 </div>
                 <div className="desc-div">
