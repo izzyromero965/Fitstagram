@@ -31,7 +31,6 @@ const profileReducer = (state = initialState, action) => {
       const newState = {
         ...state,
       };
-      let followArray = Object.values(action.follows);
       newState.followers[action.follows.follower_id] = action.follows;
       return newState;
     }
