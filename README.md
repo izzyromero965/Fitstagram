@@ -1,4 +1,6 @@
-Welcome to Fitstagram!!
+# Welcome to Fitstagram!!
+
+Fitstagram is an instagram clone made for people who are dedicated to sports. Ever get tired of seeing random things that you don't care for? Fitstagram is here to help you find motivation. Fitstagram has full C/R/U/D functionality for following a person, creating a user, posting images and commenting on others posts! You can also search for users in case you need help remembering what the full username was that you were looking for.
 
 ## Getting started
 
