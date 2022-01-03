@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { editAComment } from '../../store/post';
 
+import './editComment.css';
 const EditComment = ({ comment, setShowEdit }) => {
   const dispatch = useDispatch();
   const [content, setContent] = useState(comment?.content);
@@ -22,14 +23,19 @@ const EditComment = ({ comment, setShowEdit }) => {
 
   return (
     <div>
-      <form onSubmit={handleEdit}>
+      <form onSubmit={handleEdit} className="edit-comment-form">
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
+          className="comment-edit-input"
         />
-        <button type="submit">Submit</button>
-        <button onClick={hideEdit}>Cancel</button>
+        <button type="submit" className="edit-submit-btn">
+          Submit
+        </button>
+        <button onClick={hideEdit} className="edit-submit-btn">
+          Cancel
+        </button>
       </form>
     </div>
   );

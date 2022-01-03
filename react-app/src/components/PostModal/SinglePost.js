@@ -54,13 +54,15 @@ const SinglePost = ({ setShowModal, post }) => {
                     src={comment?.user?.profile_image_url}
                     className="profile-pic-comments"
                   ></img>
-                  <a
-                    href={`/users/${comment?.user?.id}`}
-                    className="profile-link"
-                  >
-                    {comment?.user?.username}
-                  </a>
-                  {comment?.content}
+                  <div>
+                    <a
+                      href={`/users/${comment?.user?.id}`}
+                      className="profile-link"
+                    >
+                      {comment?.user?.username}
+                    </a>
+                  </div>
+                  <div className="comment-span">{comment?.content} </div>
                   <EditAndDeleteComment comment={comment} />
                 </div>
               );

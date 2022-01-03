@@ -23,6 +23,7 @@ const EditPost = ({ post, setShowModal, setShowwModal }) => {
         value={content}
         placeholder="description"
         className="edit-post-input"
+        required
       />
       <button type="submit" className="edit-post-button">
         Edit
