@@ -1,6 +1,6 @@
 # Welcome to Fitstagram!!
 
-[Fitstagram](https://fitstagramir.herokuapp.com/) is an [instagram](https://www.instagram.com/) clone made for people who are dedicated to sports. Ever get tired of seeing random things that you don't care for? Fitstagram is here to help you find motivation. Fitstagram has full C/R/U/D functionality for following a person, creating a user, posting images and commenting on others posts! You can also search for users in case you need help remembering what the full username was that you were looking for.
+[Fitstagram](https://fitstagramir.herokuapp.com/) is an [Instagram](https://www.instagram.com/) clone made for people who are dedicated to sports. Ever get tired of seeing random things that you don't care for? Fitstagram is here to help you find motivation. Fitstagram has full C/R/U/D functionality for following a person, creating a user, posting images and commenting on others posts! You can also search for users in case you need help remembering what the full username was that you were looking for. You can find the features list [here](https://github.com/snakedreamz/Fitstagram/wiki/Feature-List).
 
 
 You can find the database schema [here](https://github.com/snakedreamz/Fitstagram/wiki/Database-Schema).
