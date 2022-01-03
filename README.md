@@ -15,7 +15,6 @@ You can find the database schema [here](https://github.com/snakedreamz/Fitstagra
  * ![HTML](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
  * ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
  * ![NODE JS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
- * ![MUI](https://img.shields.io/badge/Material--UI-0081CB?style=for-the-badge&logo=material-ui&logoColor=white)
  * ![HEROKU](https://img.shields.io/badge/Heroku-430098?style=for-the-badge&logo=heroku&logoColor=white)
 
  ### [Back-end]:
@@ -25,9 +24,7 @@ You can find the database schema [here](https://github.com/snakedreamz/Fitstagra
  * ![AWS](https://img.shields.io/badge/Amazon_AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
  * SQL Alchemy/Alembic
  * WTForms
- * Faker
  * Docker
- * [Owlbot API](https://owlbot.info)
 
 
 ## Getting started
