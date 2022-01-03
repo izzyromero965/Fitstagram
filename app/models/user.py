@@ -69,7 +69,18 @@ class User(db.Model, UserMixin):
             'nick_name': self.nick_name,
             'profile_image_url': self.profile_image_url,
             'posts': {post.id: post.to_dict() for post in self.posts},
-            'follows': {user.id: user.to_dict() for user in self.followers},
+            'follows': {user.id: user.to_dict_follows() for user in self.followers},
+            'followers': {user.id: user.username for user in self.following}
+        }
+
+    def to_dict_follows(self):
+        return {
+            'id': self.id,
+            'username': self.username.lower(),
+            'email': self.email,
+            'nick_name': self.nick_name,
+            'profile_image_url': self.profile_image_url,
+            'posts': {post.id: post.to_dict() for post in self.posts},
             'followers': {user.id: user.username for user in self.following}
         }
 
