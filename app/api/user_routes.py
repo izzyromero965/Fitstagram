@@ -133,7 +133,7 @@ def createFollow():
         follow = User.query.get(followed_id)
         follow.followUser(user)
         db.session.commit()
-        return user.to_dict_follows()
+        return follow.to_dict_follows()
 
 
 @user_routes.route('/<int:follower_id>/follows/<int:followed_id>/delete', methods=['DELETE'])
