@@ -6,6 +6,8 @@ const EDIT_POST = 'post/EDIT_POST';
 const CREATE_COMMENT = 'post/CREATE_COMMENT';
 const DELETE_COMMENT = 'post/DELETE_COMMENT';
 const EDIT_COMMENT = 'post/EDIT_COMMENT';
+const CREATE_LIKE = 'post/CREATE_LIKE';
+const DELETE_LIKE = 'post/DELETE_LIKE';
 
 const newPost = (post) => ({
   type: CREATE_POST,
@@ -47,9 +49,18 @@ const deleteComment = (comment) => ({
   comment,
 });
 
+const createLike = (like) => ({
+  type: CREATE_LIKE,
+  like,
+});
+
+const deleteLike = (like) => ({
+  type: DELETE_LIKE,
+  like,
+});
+
 // Creates a post
 export const createPost = (formdata) => async (dispatch) => {
-
   const response = await fetch(
     `/api/users/${formdata.get('user_id')}/posts/new`,
     {
@@ -157,6 +168,31 @@ export const deleteAcomment = (id) => async (dispatch) => {
   }
 };
 
+export const createALike = (like) => async (dispatch) => {
+  const response = await fetch('/api/likes/new', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(like),
+  });
+
+  if (response.ok) {
+    const like = await response.json();
+    dispatch(createLike(like));
+    return like;
+  }
+};
+
+export const deleteAlike = (id) => async (dispatch) => {
+  const response = await fetch(`/api/likes/${id}/delete`, {
+    method: 'DELETE',
+  });
+  if (response.ok) {
+    const like = await response.json();
+    dispatch(deleteLike(like));
+    return like;
+  }
+};
+
 const initialState = {};
 
 const postReducer = (state = initialState, action) => {
@@ -217,6 +253,16 @@ const postReducer = (state = initialState, action) => {
       const newState = { ...state };
 
       delete newState[action.comment.post_id].comments[action.comment.id];
+      return newState;
+    }
+    case CREATE_LIKE: {
+      const newState = { ...state };
+      newState[action.like.post_id].likes[action.like.id] = action.like;
+      return newState;
+    }
+    case DELETE_LIKE: {
+      const newState = { ...state };
+      delete newState[action.like.post_id].likes[action.like.id];
       return newState;
     }
     default:
