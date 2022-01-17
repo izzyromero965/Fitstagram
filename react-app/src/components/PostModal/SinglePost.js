@@ -1,4 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { createALike, deleteAlike } from '../../store/post';
+import { useState } from 'react';
 import CreateComment from '../CreateComment';
 import EditAndDeleteComment from '../CreateComment/CommentEditDelete';
 import DeletePostModal from '../DeletePost/DeletePostModal';
@@ -6,8 +8,10 @@ import EditPostModal from '../EditPost/EditPostModal';
 import './postModal.css';
 
 const SinglePost = ({ setShowModal, post }) => {
+  const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const postComments = useSelector((state) => state.posts[post.id].comments);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   let buttons;
 
@@ -19,6 +23,30 @@ const SinglePost = ({ setShowModal, post }) => {
       </div>
     );
   }
+
+  const handleLike = () => {
+    const like = {
+      user_id: sessionUser.id,
+      post_id: post.id,
+    };
+    dispatch(createALike(like));
+  };
+
+  const handleUnlike = () => {
+    if (sessionUser.id in post.likes) {
+      dispatch(deleteAlike(sessionUser.id));
+    }
+  };
+
+  let likeBtns;
+  if (!sessionUser.id in post?.likes) {
+    likeBtns = <i className="fa fa-heart like-icon" onClick={handleLike}></i>;
+  } else if (sessionUser.id in post?.likes) {
+    likeBtns = (
+      <i className="fas fa-heart unlike-icon" onClick={handleUnlike}></i>
+    );
+  }
+
   return (
     <div className="single-post-container">
       <img src={post?.image_url} className="single-post-img" />
@@ -70,6 +98,10 @@ const SinglePost = ({ setShowModal, post }) => {
           </div>
         </div>
         <div className="create-comment">
+          <div className="like-div">
+            {likeBtns && likeBtns}
+            <span>{Object.values(post?.likes).length}</span>
+          </div>
           <CreateComment post={post} />
         </div>
       </div>

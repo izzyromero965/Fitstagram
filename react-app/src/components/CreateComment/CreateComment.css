@@ -25,12 +25,12 @@
 .create-comment-container {
   background-color: white;
   border: none;
-  border-top: rgb(73, 73, 73);
+  /* border-top: rgb(73, 73, 73);
   border-width: 0.1px;
   border-style: solid;
   border-bottom: none;
   border-left: none;
-  border-right: none;
+  border-right: none; */
   height: 3rem;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

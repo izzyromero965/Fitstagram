@@ -9,6 +9,7 @@ import './homepage.css';
 
 export const HomepagePost = ({ post }) => {
   const [showModal, setShowModal] = useState(false);
+  const sessionUser =  useSelector((state) => state.session.user)
 
   const postCheker = (postArr) => {
     if (postArr.length > 1) {
@@ -67,6 +68,19 @@ export const HomepagePost = ({ post }) => {
     } else return null;
   };
 
+  // Like button logic: [unfinished]
+
+  // const likeBtn = (post) => {
+  //   const handleDelete
+  //  if (sessionUser.id in post.likes) {
+  //    return (
+  //      <div className="likes-div">
+  //        <i className="fas fa-heart"></i>
+  //      </div>
+  //    )
+  //  }
+  // }
+
   return (
     <div className="homepage-post-container">
       <div className="homepage-post-header">
@@ -81,6 +95,9 @@ export const HomepagePost = ({ post }) => {
           className="homepage-post-img"
           onClick={() => setShowModal(true)}
         ></img>
+        {/* {post?.likes && {
+          // this is where the button will go.
+        }} */}
         <div className="post-description-user">
           <a
             href={`/users/${post?.user?.id}`}

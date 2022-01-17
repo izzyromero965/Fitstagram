@@ -17,6 +17,6 @@ class Like(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'user': self.likeOwner.to_dict_likes(),
+            'user': self.likeOwner.id,
             'post_id': self.post_id
         }
