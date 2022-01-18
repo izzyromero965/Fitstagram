@@ -257,14 +257,12 @@ const postReducer = (state = initialState, action) => {
     }
     case CREATE_LIKE: {
       const newState = { ...state };
-      console.log('this is newState', newState);
-      console.log('this is the action', action);
       newState[action.like.post_id].likes[action.like.user] = action.like;
       return newState;
     }
     case DELETE_LIKE: {
       const newState = { ...state };
-      delete newState[action.like.post_id].likes[action.like.id];
+      delete newState[action.like.post_id].likes[action.like.user];
       return newState;
     }
     default:

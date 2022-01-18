@@ -11,6 +11,7 @@ const SinglePost = ({ setShowModal, post }) => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const postComments = useSelector((state) => state.posts[post.id].comments);
+  const thisPost = useSelector((state) => state.posts[post.id]);
   const [isLoaded, setIsLoaded] = useState(false);
 
   let buttons;
@@ -34,14 +35,13 @@ const SinglePost = ({ setShowModal, post }) => {
 
   const handleUnlike = () => {
     if (sessionUser.id in post.likes) {
-      dispatch(deleteAlike(sessionUser.id));
+      dispatch(deleteAlike(post?.likes[sessionUser.id]?.id));
     }
   };
-
   let likeBtns = null;
   if (!post.likes.hasOwnProperty(sessionUser.id)) {
     likeBtns = <i className="fa fa-heart like-icon" onClick={handleLike}></i>;
-  } else if (post.likes.hasOwnProperty(sessionUser.id)) {
+  } else if (sessionUser.id in thisPost.likes) {
     likeBtns = (
       <i className="fas fa-heart unlike-icon" onClick={handleUnlike}></i>
     );
@@ -100,7 +100,7 @@ const SinglePost = ({ setShowModal, post }) => {
         <div className="create-comment">
           <div className="like-div">
             {likeBtns}
-            <span>{Object.values(post?.likes).length}</span>
+            <span>{Object.values(thisPost.likes).length}</span>
           </div>
           <CreateComment post={post} />
         </div>
