@@ -38,10 +38,10 @@ const SinglePost = ({ setShowModal, post }) => {
     }
   };
 
-  let likeBtns;
-  if (!sessionUser.id in post?.likes) {
+  let likeBtns = null;
+  if (!post.likes.hasOwnProperty(sessionUser.id)) {
     likeBtns = <i className="fa fa-heart like-icon" onClick={handleLike}></i>;
-  } else if (sessionUser.id in post?.likes) {
+  } else {
     likeBtns = (
       <i className="fas fa-heart unlike-icon" onClick={handleUnlike}></i>
     );
@@ -99,7 +99,7 @@ const SinglePost = ({ setShowModal, post }) => {
         </div>
         <div className="create-comment">
           <div className="like-div">
-            {likeBtns && likeBtns}
+            {likeBtns}
             <span>{Object.values(post?.likes).length}</span>
           </div>
           <CreateComment post={post} />
