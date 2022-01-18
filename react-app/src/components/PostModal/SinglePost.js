@@ -41,7 +41,7 @@ const SinglePost = ({ setShowModal, post }) => {
   let likeBtns = null;
   if (!post.likes.hasOwnProperty(sessionUser.id)) {
     likeBtns = <i className="fa fa-heart like-icon" onClick={handleLike}></i>;
-  } else {
+  } else if (post.likes.hasOwnProperty(sessionUser.id)) {
     likeBtns = (
       <i className="fas fa-heart unlike-icon" onClick={handleUnlike}></i>
     );

@@ -26,8 +26,8 @@ def newLike():
 
 @like_routes.route('/<int:like_id>/delete', methods=['DELETE'])
 @login_required
-def deleteLike(like_id):
-    like = Like.query.get(like_id)
+def deleteLike(id, like_id):
+    like = Like.query.get(id)
     db.session.delete(like)
     db.session.commit()
     return {'post_id': like.post_id, 'id': like.id}
