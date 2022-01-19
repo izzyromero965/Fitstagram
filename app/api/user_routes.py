@@ -2,7 +2,7 @@ from flask import Blueprint, request
 from flask_login import login_required
 from app.forms.post_follower import NewFollow
 from sqlalchemy import or_
-from app.models import db, User, Post
+from app.models import db, User, Post, Like
 from app.forms import NewPost, EditPost
 from app.awsupload import (
     upload_file_to_s3, allowed_file, get_unique_filename)

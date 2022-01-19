@@ -63,10 +63,31 @@
 
 .post-comments {
   overflow-y: scroll;
-  height: 24rem;
+  height: 23rem;
   border-bottom: 1px solid rgb(73, 73, 73);
 }
 
 .comment-span {
   word-wrap: break-word;
+}
+
+.create-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.like-icon {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  color: red;
+  width: 2rem;
+}
+.like-icon:hover {
+  cursor: pointer;
+}
+
+.unlike-icon {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  background-color: none;
 }

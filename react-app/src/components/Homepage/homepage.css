@@ -119,6 +119,8 @@
 .comment-content {
   font-size: 14px;
   font-weight: 200;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .post-description {
