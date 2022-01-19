@@ -39,13 +39,14 @@ const SinglePost = ({ setShowModal, post }) => {
     }
   };
   let likeBtns = null;
-  // if (!post.likes.hasOwnProperty(sessionUser.id)) {
-  //   likeBtns = <i className="fa fa-heart like-icon" onClick={handleLike}></i>;
-  // } else if (sessionUser.id in thisPost.likes) {
-  //   likeBtns = (
-  //     <i className="fas fa-heart unlike-icon" onClick={handleUnlike}></i>
-  //   );
-  // }
+  console.log(thisPost.likes);
+  if (!post.likes.hasOwnProperty(sessionUser.id)) {
+    likeBtns = <i className="far fa-heart like-icon" onClick={handleLike}></i>;
+  } else if (sessionUser.id in thisPost.likes) {
+    likeBtns = (
+      <i className="fa fa-heart unlike-icon" onClick={handleUnlike}></i>
+    );
+  }
 
   return (
     <div className="single-post-container">
@@ -99,8 +100,8 @@ const SinglePost = ({ setShowModal, post }) => {
         </div>
         <div className="create-comment">
           <div className="like-div">
-            {/* {likeBtns} */}
-            {/* <span>{Object.values(thisPost.likes).length}</span> */}
+            {likeBtns}
+            <span>{Object.values(thisPost.likes).length}</span>
           </div>
           <CreateComment post={post} />
         </div>

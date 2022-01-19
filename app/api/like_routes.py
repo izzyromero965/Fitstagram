@@ -18,7 +18,7 @@ def newLike():
         db.session.add(likeToCreate)
         db.session.commit()
 
-        return Like.query.get(likeToCreate.id).to_dict()
+        return Like.query.get(likeToCreate.id).to_dict_for_likes()
 
     else:
         return 'Something went wrong while creating a like'

@@ -75,7 +75,7 @@ class User(db.Model, UserMixin):
             'posts': {post.id: post.to_dict() for post in self.posts},
             'follows': {user.id: user.to_dict_follows() for user in self.followers},
             'followers': {user.id: user.username for user in self.following},
-            'likes': {like.id: like.to_dict() for like in self.likes}
+            'likes': {like.id: like.to_dict_for_likes() for like in self.likes}
         }
 
     def to_dict_follows(self):
