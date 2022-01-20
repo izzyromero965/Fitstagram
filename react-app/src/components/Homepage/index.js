@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPosts } from '../../store/post';
+import { createALike, deleteAlike, getPosts } from '../../store/post';
 import { getFollowedUsers } from '../../store/followers';
 import { Modal } from '../context/Modal';
 import SinglePost from '../PostModal/SinglePost';
@@ -9,7 +9,9 @@ import './homepage.css';
 
 export const HomepagePost = ({ post }) => {
   const [showModal, setShowModal] = useState(false);
-  const sessionUser =  useSelector((state) => state.session.user)
+  const sessionUser = useSelector((state) => state.session.user);
+  const thisPost = useSelector((state) => state.posts[post.id]);
+  const dispatch = useDispatch();
 
   const postCheker = (postArr) => {
     if (postArr.length > 1) {
@@ -68,19 +70,29 @@ export const HomepagePost = ({ post }) => {
     } else return null;
   };
 
-  // Like button logic: [unfinished]
+  const handleLike = () => {
+    const like = {
+      user_id: sessionUser.id,
+      post_id: post.id,
+    };
+    dispatch(createALike(like));
+  };
 
-  // const likeBtn = (post) => {
-  //   const handleDelete
-  //  if (sessionUser.id in post.likes) {
-  //    return (
-  //      <div className="likes-div">
-  //        <i className="fas fa-heart"></i>
-  //      </div>
-  //    )
-  //  }
-  // }
+  const handleUnlike = () => {
+    if (sessionUser.id in post.likes) {
+      dispatch(deleteAlike(post?.likes[sessionUser.id]?.id));
+    }
+  };
 
+  let likeBtns = null;
+  console.log(thisPost.likes);
+  if (!post.likes.hasOwnProperty(sessionUser.id)) {
+    likeBtns = <i className="far fa-heart like-icon" onClick={handleLike}></i>;
+  } else if (sessionUser.id in thisPost.likes) {
+    likeBtns = (
+      <i className="fa fa-heart unlike-icon" onClick={handleUnlike}></i>
+    );
+  }
   return (
     <div className="homepage-post-container">
       <div className="homepage-post-header">
@@ -95,9 +107,10 @@ export const HomepagePost = ({ post }) => {
           className="homepage-post-img"
           onClick={() => setShowModal(true)}
         ></img>
-        {/* {post?.likes && {
-          // this is where the button will go.
-        }} */}
+        <div className="like-div">
+          {likeBtns}
+          <span>{Object.values(thisPost.likes).length}</span>
+        </div>
         <div className="post-description-user">
           <a
             href={`/users/${post?.user?.id}`}
@@ -158,18 +171,6 @@ const Homepage = () => {
               </div>
             ))}
           </div>
-          {/* <div className="profile-container">
-            <div className="profile-info">
-              <img
-                src={sessionUser.profile_image_url}
-                className="profile-image"
-              ></img>
-              <div className="username-nickname">
-                <a href={`/users/${sessionUser.id}`}>{sessionUser.username}</a>
-                <span>{sessionUser.nick_name}</span>
-              </div>
-            </div>
-          </div> */}
           <div className="homepage-footer">
             <span>Developed by Israel Romero</span>
             <div className="splash-icons">
