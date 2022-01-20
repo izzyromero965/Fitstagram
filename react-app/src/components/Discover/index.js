@@ -11,7 +11,7 @@ export const DiscoverPost = ({ post }) => {
     <div>
       <img
         src={post?.image_url}
-        alt="discover-image"
+        alt="discover-post"
         onClick={() => setShowModal(true)}
         className="post-img"
       />

@@ -18,10 +18,6 @@ export const HomepagePost = ({ post }) => {
       return (
         <>
           <div className="profile">
-            {/* <img
-              src={postArr[postArr.length - 1].user.profile_image_url}
-              className="profile-pic"
-            /> */}
             <a
               href={`/users/${postArr[postArr.length - 1].user.id}`}
               className="comment-username"
@@ -33,10 +29,6 @@ export const HomepagePost = ({ post }) => {
             </span>
           </div>
           <div className="profile">
-            {/* <img
-              src={postArr[postArr.length - 2].user.profile_image_url}
-              className="profile-pic"
-            /> */}
             <a
               href={`/users/${postArr[postArr.length - 2].user.id}`}
               className="comment-username"
@@ -53,10 +45,6 @@ export const HomepagePost = ({ post }) => {
       return (
         <>
           <div className="profile">
-            {/* <img
-              src={postArr[0].user.profile_image_url}
-              className="profile-pic"
-            /> */}
             <a
               href={`/users/${postArr[0].user.id}`}
               className="comment-username"
@@ -96,7 +84,11 @@ export const HomepagePost = ({ post }) => {
     <div className="homepage-post-container">
       <div className="homepage-post-header">
         <div className="homepage-post-profile">
-          <img src={post?.user.profile_image_url} className="profile-pic" />
+          <img
+            src={post?.user.profile_image_url}
+            className="profile-pic"
+            alt="profile-pic"
+          />
           <a href={`/users/${post.user.id}`} className="profile-username">
             {post.user.username}
           </a>
@@ -105,6 +97,7 @@ export const HomepagePost = ({ post }) => {
           src={`${post.image_url}`}
           className="homepage-post-img"
           onClick={() => setShowModal(true)}
+          alt="post-pic"
         ></img>
         <div className="like-div">
           {likeBtns}

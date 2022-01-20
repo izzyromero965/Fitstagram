@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { createALike, deleteAlike } from '../../store/post';
-import { useState } from 'react';
 import CreateComment from '../CreateComment';
 import EditAndDeleteComment from '../CreateComment/CommentEditDelete';
 import DeletePostModal from '../DeletePost/DeletePostModal';
@@ -12,7 +11,6 @@ const SinglePost = ({ setShowModal, post }) => {
   const sessionUser = useSelector((state) => state.session.user);
   const postComments = useSelector((state) => state.posts[post.id].comments);
   const thisPost = useSelector((state) => state.posts[post.id]);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   let buttons;
 
@@ -49,13 +47,18 @@ const SinglePost = ({ setShowModal, post }) => {
 
   return (
     <div className="single-post-container">
-      <img src={post?.image_url} className="single-post-img" />
+      <img
+        src={post?.image_url}
+        className="single-post-img"
+        alt="single-post"
+      />
       <div className="comment-container">
         <div className="comments-header">
           <div className="profile">
             <img
               src={post.user.profile_image_url}
               className="profile-pic-comments"
+              alt="user-profile"
             />
             <a href={`/users/${post.user.id}`} className="profile-link">
               {post.user.username}
@@ -68,6 +71,7 @@ const SinglePost = ({ setShowModal, post }) => {
             <img
               src={post.user.profile_image_url}
               className="profile-pic-comments"
+              alt="comment-pic"
             />
             <a href={`/users/${post.user_id}`} className="profile-link">
               {post.user.username}
@@ -81,6 +85,7 @@ const SinglePost = ({ setShowModal, post }) => {
                   <img
                     src={comment?.user?.profile_image_url}
                     className="profile-pic-comments"
+                    alt="profile-pic"
                   ></img>
                   <div>
                     <a

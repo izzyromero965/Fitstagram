@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom';
 import {
   followUser,
   getFollowedUsers,
-  getFollowersThunk,
   unfollowUser,
 } from '../../store/followers';
 import { getSingleUserPosts } from '../../store/post';

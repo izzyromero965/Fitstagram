@@ -21,6 +21,7 @@ const SplashPage = () => {
           <img
             src="https://media2.giphy.com/media/3mJyfDFH0BqgbdghWJ/giphy.gif?cid=ecf05e47qus6lrrmkenpd40h41s9okdgo7w0xq03i9dyhiue&rid=giphy.gif&ct=g"
             className="workout-gif"
+            alt="workoutGif"
           ></img>
         </div>
       </div>

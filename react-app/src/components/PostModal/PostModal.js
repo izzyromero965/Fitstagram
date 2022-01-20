@@ -13,6 +13,7 @@ const SinglePostModal = ({ post }) => {
           setShowModal(true);
         }}
         className="post-img"
+        alt="post-pic"
       />
       {showModal && (
         <Modal onClose={() => setShowModal(false)} id="postModal">
