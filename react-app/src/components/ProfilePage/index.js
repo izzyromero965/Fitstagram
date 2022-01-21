@@ -25,7 +25,6 @@ const ProfilePage = () => {
     await dispatch(loadProfile(userId));
     await dispatch(getSingleUserPosts(userId));
     await dispatch(getFollowedUsers(sessionUser.id));
-    // await dispatch(getFollowersThunk(sessionUser.id));
     if (!isLoaded) setIsLoaded(true);
   }, [dispatch, userId, sessionUser.id]);
 

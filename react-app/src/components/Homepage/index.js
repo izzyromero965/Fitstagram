@@ -101,7 +101,7 @@ export const HomepagePost = ({ post }) => {
         ></img>
         <div className="like-div">
           {likeBtns}
-          <span>{Object.values(thisPost.likes).length}</span>
+          <span> {Object.values(thisPost.likes).length} likes</span>
         </div>
         <div className="post-description-user">
           <a
