@@ -34,7 +34,11 @@ const Search = () => {
                 href={`/users/${user.id}`}
                 className="results-link"
               >
-                <img src={user?.profile_image_url} className="search-pic" />
+                <img
+                  src={user?.profile_image_url}
+                  className="search-pic"
+                  alt="result"
+                />
                 <div className="results-desc-container">
                   <div className="username-container">
                     <span className="search-username"> {user?.username}</span>

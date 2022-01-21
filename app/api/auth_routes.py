@@ -74,7 +74,6 @@ def sign_up():
     image.filename = get_unique_filename(image.filename)
 
     upload = upload_file_to_s3(image)
-    print("bingbong----------<<<<<<<<<", upload)
 
     if "url" not in upload:
         # if the dictionary doesn't have a url key

@@ -76,7 +76,6 @@ const followersReducer = (state = initialState, action) => {
         // ...action.follows,
       };
       newState[action.follows.id] = action.follows.id;
-      console.log('this is action', action);
       return newState;
     }
     case UNFOLLOW: {

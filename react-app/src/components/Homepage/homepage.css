@@ -164,3 +164,27 @@
   color: rgb(145, 145, 145);
   text-align: center;
 }
+
+.like-icon {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  color: red;
+  width: 2rem;
+}
+.like-icon:hover {
+  cursor: pointer;
+}
+.unlike-icon {
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  background-color: none;
+  color: red;
+  width: 2rem;
+}
+
+.unlike-icon:hover {
+  cursor: pointer;
+}
+.like-div {
+  background-color: rgb(22, 22, 22);
+}
