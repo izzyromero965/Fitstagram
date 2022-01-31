@@ -16,8 +16,26 @@ const SignUpForm = () => {
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
+  const validate = () => {
+    const validationErrors = [];
+    if (password !== repeatPassword) {
+      validationErrors.push('Passwords must match.');
+    }
+    if (!profile_image_url) {
+      validationErrors.push('Must have a profile picture.');
+    }
+    if (username.length < 6) {
+      validationErrors.push('Username must be at least 6 characters long');
+    }
+    return validationErrors;
+  };
+
   const onSignUp = async (e) => {
     e.preventDefault();
+    const errors = validate();
+    if (errors.length > 0) {
+      return setErrors(errors);
+    }
     if (password === repeatPassword) {
       const formData = new FormData();
       formData.append('profile_image_url', profile_image_url);
@@ -56,9 +74,9 @@ const SignUpForm = () => {
     <div className="signup-container">
       <form onSubmit={onSignUp} className="signup-form">
         <div>
-          {errors?.map((error, ind) => (
-            <div key={ind}>{error}</div>
-          ))}
+          {errors?.map((error, ind) => {
+            return <div key={ind}>{error}</div>;
+          })}
         </div>
         <span className="logo">Fitstagram</span>
         <div className="form-input-div">
@@ -118,6 +136,7 @@ const SignUpForm = () => {
             accept=".jpg,.jpeg,.png,.gif"
             onChange={(e) => set_profile_image_url(e.target.files[0])}
             required
+            className="uploadInput"
           />
         </div>
         <div className="form-input-div">
