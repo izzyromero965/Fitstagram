@@ -27,7 +27,7 @@ You can find the database schema [here](https://github.com/snakedreamz/Fitstagra
  * Docker
 
 
-## Future Features for Benkyou
+## Future Features for Fitstagram
 
 * DM'ing other users.
 * Posting your workouts for sale
